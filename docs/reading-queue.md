@@ -20,7 +20,8 @@ https://www.finos.org/2026-ai-open-source-in-finance-report
 Theme: agent identity, authorization, provenance, cybersecurity, AI costs, and shared standards inside regulated financial institutions.
 
 ### Reuters — Factory funding, September 15, 2026
-**Reuters — “AI coding agent startup Factory triples valuation to $5 billion in latest funding round”**\nhttps://www.reuters.com/business/ai-coding-agent-startup-factory-triples-valuation-5-billion-latest-funding-round-2026-09-15/
+**Reuters — “AI coding agent startup Factory triples valuation to $5 billion in latest funding round”**
+https://www.reuters.com/business/ai-coding-agent-startup-factory-triples-valuation-5-billion-latest-funding-round-2026-09-15/
 
 Theme: if code generation becomes cheap, which constraints become more economically valuable?
 
