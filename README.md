@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/finance-ai-lab-banner.svg" alt="Finance AI Lab — Markets, Infrastructure, AI, Process Engineering" width="100%" />
+</p>
+
 # Finance AI Lab
 
 A biweekly learning-and-building lab for three friends exploring **financial technology, markets, AI, process engineering, and emerging financial infrastructure**.
