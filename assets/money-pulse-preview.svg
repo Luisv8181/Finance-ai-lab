@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="860" viewBox="0 0 1500 860" role="img" aria-labelledby="title desc">
+<title id="title">Money Pulse financial wellness prototype preview</title>
+<desc id="desc">A stylized dark financial wellness dashboard with a circular money allocation pulse, monthly metrics, and three expense buckets.</desc>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#06101d"/><stop offset="1" stop-color="#0b1b29"/></linearGradient>
+  <linearGradient id="acc" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#58d8ff"/><stop offset=".5" stop-color="#79efc5"/><stop offset="1" stop-color="#b19dff"/></linearGradient>
+  <radialGradient id="glow"><stop stop-color="#58d8ff" stop-opacity=".22"/><stop offset="1" stop-color="#58d8ff" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="1500" height="860" rx="34" fill="url(#bg)"/>
+<circle cx="1270" cy="90" r="340" fill="url(#glow)"/>
+<g font-family="Arial, Helvetica, sans-serif">
+  <text x="70" y="74" fill="#91aabd" font-size="16" letter-spacing="4">FINANCE AI LAB · EXPERIMENT 02</text>
+  <text x="70" y="124" fill="#f2f8fb" font-size="34" font-weight="700">Money Pulse / Financial Wellness Lab</text>
+  <text x="70" y="174" fill="#c2d6e3" font-size="20">See your money as a living system.</text>
+
+  <rect x="58" y="220" width="450" height="570" rx="28" fill="#0d2233" fill-opacity=".78" stroke="#91aabd" stroke-opacity=".18"/>
+  <text x="88" y="264" fill="#91aabd" font-size="14" letter-spacing="3">MONTHLY SYSTEM MAP</text>
+  <text x="88" y="302" fill="#edf7fb" font-size="25" font-weight="700">Your Money Pulse</text>
+
+  <circle cx="283" cy="490" r="142" fill="none" stroke="#58d8ff" stroke-width="30" stroke-dasharray="252 640" transform="rotate(-90 283 490)"/>
+  <circle cx="283" cy="490" r="142" fill="none" stroke="#b19dff" stroke-width="30" stroke-dasharray="126 766" stroke-dashoffset="-266" transform="rotate(-90 283 490)"/>
+  <circle cx="283" cy="490" r="142" fill="none" stroke="#79efc5" stroke-width="30" stroke-dasharray="164 728" stroke-dashoffset="-405" transform="rotate(-90 283 490)"/>
+  <circle cx="283" cy="490" r="142" fill="none" stroke="#ffd17c" stroke-width="30" stroke-dasharray="120 772" stroke-dashoffset="-582" transform="rotate(-90 283 490)"/>
+  <circle cx="283" cy="490" r="110" fill="#091725" stroke="#ffffff" stroke-opacity=".07"/>
+  <text x="283" y="455" text-anchor="middle" fill="#91aabd" font-size="13" letter-spacing="2">BREATHING ROOM</text>
+  <text x="283" y="512" text-anchor="middle" fill="#f1f8fb" font-size="48" font-weight="700">$940</text>
+  <text x="283" y="545" text-anchor="middle" fill="#91aabd" font-size="13">after expenses + planned savings</text>
+
+  <text x="90" y="710" fill="#58d8ff" font-size="16">● Essentials 52%</text>
+  <text x="280" y="710" fill="#b19dff" font-size="16">● Lifestyle 10%</text>
+  <text x="90" y="750" fill="#79efc5" font-size="16">● Future 18%</text>
+  <text x="280" y="750" fill="#ffd17c" font-size="16">● Margin 20%</text>
+
+  <g>
+    <rect x="535" y="220" width="205" height="126" rx="20" fill="#10283b" stroke="#91aabd" stroke-opacity=".15"/>
+    <rect x="755" y="220" width="205" height="126" rx="20" fill="#10283b" stroke="#91aabd" stroke-opacity=".15"/>
+    <rect x="975" y="220" width="205" height="126" rx="20" fill="#10283b" stroke="#91aabd" stroke-opacity=".15"/>
+    <rect x="1195" y="220" width="245" height="126" rx="20" fill="#10283b" stroke="#91aabd" stroke-opacity=".15"/>
+
+    <text x="560" y="255" fill="#91aabd" font-size="12" letter-spacing="2">TAKE-HOME</text>
+    <text x="560" y="302" fill="#f2f8fb" font-size="31" font-weight="700">$4,600</text>
+
+    <text x="780" y="255" fill="#91aabd" font-size="12" letter-spacing="2">SAVINGS RATE</text>
+    <text x="780" y="302" fill="#79efc5" font-size="31" font-weight="700">18%</text>
+
+    <text x="1000" y="255" fill="#91aabd" font-size="12" letter-spacing="2">ESSENTIAL LOAD</text>
+    <text x="1000" y="302" fill="#58d8ff" font-size="31" font-weight="700">52%</text>
+
+    <text x="1220" y="255" fill="#91aabd" font-size="12" letter-spacing="2">EMERGENCY RUNWAY</text>
+    <text x="1220" y="302" fill="#f2f8fb" font-size="31" font-weight="700">3.0 mo</text>
+  </g>
+
+  <rect x="535" y="370" width="905" height="140" rx="24" fill="#0d2233" fill-opacity=".78" stroke="#91aabd" stroke-opacity=".18"/>
+  <text x="565" y="410" fill="#91aabd" font-size="13" letter-spacing="3">SHAPE THE SYSTEM</text>
+  <text x="565" y="448" fill="#eef7fb" font-size="25" font-weight="700">Change one assumption. Watch everything respond.</text>
+  <rect x="565" y="468" width="176" height="24" rx="12" fill="#58d8ff" fill-opacity=".14" stroke="#58d8ff" stroke-opacity=".28"/>
+  <rect x="755" y="468" width="176" height="24" rx="12" fill="#b19dff" fill-opacity=".12" stroke="#b19dff" stroke-opacity=".26"/>
+  <rect x="945" y="468" width="176" height="24" rx="12" fill="#79efc5" fill-opacity=".12" stroke="#79efc5" stroke-opacity=".26"/>
+
+  <g>
+    <rect x="535" y="535" width="287" height="255" rx="24" fill="#0d2233" fill-opacity=".78" stroke="#58d8ff" stroke-opacity=".18"/>
+    <rect x="836" y="535" width="287" height="255" rx="24" fill="#0d2233" fill-opacity=".78" stroke="#b19dff" stroke-opacity=".18"/>
+    <rect x="1137" y="535" width="303" height="255" rx="24" fill="#0d2233" fill-opacity=".78" stroke="#79efc5" stroke-opacity=".18"/>
+
+    <text x="565" y="580" fill="#58d8ff" font-size="20" font-weight="700">● Essentials</text>
+    <text x="866" y="580" fill="#b19dff" font-size="20" font-weight="700">● Lifestyle</text>
+    <text x="1167" y="580" fill="#79efc5" font-size="20" font-weight="700">● Future</text>
+
+    <text x="565" y="630" fill="#c2d6e3" font-size="16">Rent</text><text x="775" y="630" text-anchor="end" fill="#eef7fb" font-size="16">$1,350</text>
+    <text x="565" y="669" fill="#c2d6e3" font-size="16">Groceries</text><text x="775" y="669" text-anchor="end" fill="#eef7fb" font-size="16">$420</text>
+    <text x="565" y="708" fill="#c2d6e3" font-size="16">Utilities</text><text x="775" y="708" text-anchor="end" fill="#eef7fb" font-size="16">$210</text>
+
+    <text x="866" y="630" fill="#c2d6e3" font-size="16">Dining / coffee</text><text x="1078" y="630" text-anchor="end" fill="#eef7fb" font-size="16">$190</text>
+    <text x="866" y="669" fill="#c2d6e3" font-size="16">Entertainment</text><text x="1078" y="669" text-anchor="end" fill="#eef7fb" font-size="16">$120</text>
+    <text x="866" y="708" fill="#c2d6e3" font-size="16">Trips / fun</text><text x="1078" y="708" text-anchor="end" fill="#eef7fb" font-size="16">$130</text>
+
+    <text x="1167" y="630" fill="#c2d6e3" font-size="16">Savings / investing</text><text x="1395" y="630" text-anchor="end" fill="#eef7fb" font-size="16">$650</text>
+    <text x="1167" y="669" fill="#c2d6e3" font-size="16">Debt payoff</text><text x="1395" y="669" text-anchor="end" fill="#eef7fb" font-size="16">$300</text>
+    <text x="1167" y="734" fill="#91aabd" font-size="13">Designed to be challenged,</text>
+    <text x="1167" y="756" fill="#91aabd" font-size="13">reclassified, and rebuilt.</text>
+  </g>
+</g>
+</svg>
