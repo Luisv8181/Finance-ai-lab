@@ -1,0 +1,156 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="560" viewBox="0 0 1600 560" role="img" aria-labelledby="title desc">
+  <title id="title">Finance AI Lab banner</title>
+  <desc id="desc">A dark technical banner combining market charts, network nodes, ledger blocks, and AI data motifs.</desc>
+
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#07111f"/>
+      <stop offset="48%" stop-color="#0c1f31"/>
+      <stop offset="100%" stop-color="#07131d"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#56d7ff"/>
+      <stop offset="50%" stop-color="#7ef0c5"/>
+      <stop offset="100%" stop-color="#b3a2ff"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#17304a" stop-opacity=".72"/>
+      <stop offset="100%" stop-color="#0c1b2b" stop-opacity=".24"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#56d7ff" stop-opacity=".18"/>
+      <stop offset="100%" stop-color="#56d7ff" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="8"/>
+    </filter>
+    <filter id="smallGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3"/>
+    </filter>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0H0V48" fill="none" stroke="#8cb8d8" stroke-opacity=".055" stroke-width="1"/>
+    </pattern>
+    <clipPath id="round">
+      <rect x="20" y="20" width="1560" height="520" rx="34"/>
+    </clipPath>
+  </defs>
+
+  <rect width="1600" height="560" fill="#050b12"/>
+  <g clip-path="url(#round)">
+    <rect x="20" y="20" width="1560" height="520" rx="34" fill="url(#bg)"/>
+    <rect x="20" y="20" width="1560" height="520" rx="34" fill="url(#grid)"/>
+
+    <ellipse cx="1240" cy="120" rx="420" ry="300" fill="url(#glow)"/>
+    <ellipse cx="340" cy="520" rx="380" ry="240" fill="url(#glow)" opacity=".42"/>
+
+    <!-- left identity rail -->
+    <rect x="74" y="82" width="8" height="366" rx="4" fill="url(#accent)"/>
+    <circle cx="78" cy="92" r="10" fill="#56d7ff" opacity=".5" filter="url(#smallGlow)"/>
+    <circle cx="78" cy="438" r="10" fill="#b3a2ff" opacity=".45" filter="url(#smallGlow)"/>
+
+    <!-- title -->
+    <text x="124" y="174" fill="#f3f7fb" font-family="Inter, Arial, sans-serif" font-size="76" font-weight="700" letter-spacing="3">FINANCE AI LAB</text>
+    <text x="128" y="222" fill="#a9bed0" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="500" letter-spacing="1.4">MARKETS  •  INFRASTRUCTURE  •  AI  •  PROCESS ENGINEERING</text>
+
+    <!-- statement -->
+    <text x="128" y="311" fill="#dce8f2" font-family="Inter, Arial, sans-serif" font-size="31" font-weight="600">Observe. Explain. Build.</text>
+    <text x="128" y="352" fill="#8fa9bd" font-family="Inter, Arial, sans-serif" font-size="21">A shared research and engineering lab for understanding</text>
+    <text x="128" y="384" fill="#8fa9bd" font-family="Inter, Arial, sans-serif" font-size="21">how modern finance and intelligent systems actually work.</text>
+
+    <!-- tiny protocol labels -->
+    <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="15" fill="#66869e">
+      <text x="128" y="446">DATA → EVIDENCE → INTERPRETATION → HUMAN REVIEW</text>
+      <text x="128" y="477">BIWEEKLY / BUILD-IN-PUBLIC / RESEARCH-FIRST</text>
+    </g>
+
+    <!-- right glass panel -->
+    <rect x="966" y="86" width="534" height="390" rx="28" fill="url(#panel)" stroke="#7fcff5" stroke-opacity=".16"/>
+    <rect x="966" y="86" width="534" height="390" rx="28" fill="none" stroke="#ffffff" stroke-opacity=".05"/>
+
+    <!-- top mini ticker -->
+    <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="14">
+      <text x="1002" y="124" fill="#607c91">MARKET OBSERVATORY</text>
+      <circle cx="1452" cy="117" r="5" fill="#7ef0c5"/>
+      <text x="1464" y="123" fill="#83a1b8">LIVE</text>
+    </g>
+
+    <!-- chart baseline/grid -->
+    <g stroke="#a8c6dc" stroke-opacity=".09" stroke-width="1">
+      <line x1="1000" y1="170" x2="1464" y2="170"/>
+      <line x1="1000" y1="225" x2="1464" y2="225"/>
+      <line x1="1000" y1="280" x2="1464" y2="280"/>
+      <line x1="1000" y1="335" x2="1464" y2="335"/>
+    </g>
+
+    <!-- market signal -->
+    <path d="M1006 314
+             C1030 307, 1040 286, 1060 292
+             S1098 320, 1120 288
+             S1156 214, 1182 236
+             S1218 280, 1240 244
+             S1272 204, 1298 221
+             S1336 257, 1360 215
+             S1402 156, 1430 177
+             S1454 173, 1465 158"
+          fill="none" stroke="url(#accent)" stroke-width="4.5" stroke-linecap="round"/>
+    <path d="M1006 314
+             C1030 307, 1040 286, 1060 292
+             S1098 320, 1120 288
+             S1156 214, 1182 236
+             S1218 280, 1240 244
+             S1272 204, 1298 221
+             S1336 257, 1360 215
+             S1402 156, 1430 177
+             S1454 173, 1465 158"
+          fill="none" stroke="#56d7ff" stroke-opacity=".28" stroke-width="11" filter="url(#softGlow)"/>
+
+    <!-- candlestick-ish anchors -->
+    <g stroke="#7ef0c5" stroke-width="2" opacity=".75">
+      <line x1="1040" y1="256" x2="1040" y2="319"/><rect x="1034" y="270" width="12" height="26" rx="2" fill="#7ef0c5" fill-opacity=".28"/>
+      <line x1="1100" y1="268" x2="1100" y2="329"/><rect x="1094" y="285" width="12" height="19" rx="2" fill="#7ef0c5" fill-opacity=".28"/>
+      <line x1="1160" y1="203" x2="1160" y2="274"/><rect x="1154" y="220" width="12" height="28" rx="2" fill="#7ef0c5" fill-opacity=".28"/>
+      <line x1="1240" y1="221" x2="1240" y2="286"/><rect x="1234" y="239" width="12" height="24" rx="2" fill="#7ef0c5" fill-opacity=".28"/>
+      <line x1="1325" y1="198" x2="1325" y2="260"/><rect x="1319" y="214" width="12" height="23" rx="2" fill="#7ef0c5" fill-opacity=".28"/>
+      <line x1="1418" y1="147" x2="1418" y2="206"/><rect x="1412" y="165" width="12" height="20" rx="2" fill="#7ef0c5" fill-opacity=".28"/>
+    </g>
+
+    <!-- network / ledger nodes -->
+    <g stroke="#b3a2ff" stroke-opacity=".35" stroke-width="1.5">
+      <line x1="1040" y1="391" x2="1112" y2="365"/>
+      <line x1="1112" y1="365" x2="1192" y2="402"/>
+      <line x1="1192" y1="402" x2="1274" y2="368"/>
+      <line x1="1274" y1="368" x2="1360" y2="402"/>
+      <line x1="1360" y1="402" x2="1442" y2="366"/>
+      <line x1="1112" y1="365" x2="1274" y2="368"/>
+      <line x1="1192" y1="402" x2="1360" y2="402"/>
+    </g>
+    <g fill="#0c1d2c" stroke="url(#accent)" stroke-width="2">
+      <circle cx="1040" cy="391" r="8"/>
+      <circle cx="1112" cy="365" r="8"/>
+      <circle cx="1192" cy="402" r="8"/>
+      <circle cx="1274" cy="368" r="8"/>
+      <circle cx="1360" cy="402" r="8"/>
+      <circle cx="1442" cy="366" r="8"/>
+    </g>
+
+    <!-- ledger blocks -->
+    <g>
+      <rect x="1002" y="431" width="104" height="27" rx="8" fill="#56d7ff" fill-opacity=".08" stroke="#56d7ff" stroke-opacity=".28"/>
+      <rect x="1120" y="431" width="104" height="27" rx="8" fill="#7ef0c5" fill-opacity=".08" stroke="#7ef0c5" stroke-opacity=".28"/>
+      <rect x="1238" y="431" width="104" height="27" rx="8" fill="#b3a2ff" fill-opacity=".08" stroke="#b3a2ff" stroke-opacity=".28"/>
+      <rect x="1356" y="431" width="104" height="27" rx="8" fill="#56d7ff" fill-opacity=".08" stroke="#56d7ff" stroke-opacity=".28"/>
+      <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" fill="#7896ac">
+        <text x="1021" y="449">SOURCE</text>
+        <text x="1144" y="449">EVENT</text>
+        <text x="1260" y="449">MODEL</text>
+        <text x="1379" y="449">REVIEW</text>
+      </g>
+    </g>
+
+    <!-- corner detail -->
+    <path d="M1518 57h24v24" fill="none" stroke="#56d7ff" stroke-opacity=".25" stroke-width="2"/>
+    <path d="M58 503v-24H34" fill="none" stroke="#b3a2ff" stroke-opacity=".22" stroke-width="2"/>
+  </g>
+
+  <rect x="20" y="20" width="1560" height="520" rx="34" fill="none" stroke="#92b8d0" stroke-opacity=".12"/>
+</svg>
