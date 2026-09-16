@@ -1,0 +1,36 @@
+name: Opportunity Radar
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 13 * * 1"
+
+permissions:
+  contents: write
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Scan official opportunity pages
+        run: python scripts/opportunity_scanner.py
+
+      - name: Commit changed review queue
+        run: |
+          git config user.name "finance-ai-lab-bot"
+          git config user.email "finance-ai-lab-bot@users.noreply.github.com"
+          git add resources/opportunities-auto.md
+          if git diff --cached --quiet; then
+            echo "No changes."
+            exit 0
+          fi
+          git commit -m "chore: refresh opportunity radar"
+          git push
