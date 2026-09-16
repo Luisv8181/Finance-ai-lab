@@ -1,155 +1,157 @@
 # Finance AI Lab
 
-A collaborative learning and building lab for three friends exploring financial technology, AI, markets, process engineering, and emerging financial infrastructure.
+A biweekly learning-and-building lab for three friends exploring **financial technology, markets, AI, process engineering, and emerging financial infrastructure**.
+
+The lab is part discussion group, part research notebook, and part tiny engineering team.
+
+## Start here
+
+**For tonight — September 16, 2026**
+- [Kickoff agenda](meetings/2026-09-16-kickoff.md)
+- [Orientation and recurring meeting format](docs/orientation.md)
+- [Reading queue](docs/reading-queue.md)
+- [Market Watcher project](projects/market-watcher/README.md)
+
+**For each person's AI coding agent**
+- [AI agent + GitHub onboarding](docs/AI_AGENT_ONBOARDING.md)
+- [Standing instructions for agents](AGENTS.md)
+- [Contribution workflow](CONTRIBUTING.md)
+
+**For getting deeper into the space**
+- [Conferences, pathways, communities, and videos](resources/opportunities.md)
+- [Automatically refreshed opportunity review queue](resources/opportunities-auto.md)
+- [GitHub projects worth studying](references/github-projects.md)
 
 ## Mission
 
-Learn the financial system by building small, working software together.
+Learn how modern finance and AI systems actually work by discussing primary sources and building small, inspectable software together.
 
-Every two weeks we aim to:
+Every two weeks:
 
-1. Discuss life, work, business, and ideas.
-2. Read and debate one high-quality article, paper, primary source, or GitHub project.
-3. Build or improve one small piece of the shared project.
-4. Capture what we learned in GitHub.
+1. Share meaningful life, career, and business updates.
+2. Build a compact market mental model.
+3. Discuss one strong reading.
+4. Examine one failed assumption or “blooper.”
+5. Build or improve one artifact.
+6. Capture decisions, questions, and next actions in GitHub.
 
-## First Project: Market Observatory
+## Flagship project: Market Watcher / Market Tutor
 
-A learning-first market intelligence agent that watches selected markets and explains:
+A learning-first market intelligence system that eventually should answer:
 
-- What moved
-- Why it may have moved
-- Which data supports the explanation
-- What macro, company, or infrastructure events matter
-- What we should learn more about
-- What the agent is uncertain about
+- What moved?
+- How do we know?
+- What might explain it?
+- Which explanations are weak?
+- What financial concept does this illustrate?
+- What should we investigate next?
+- What is the system uncertain about?
 
-This is an educational/research project, not an investment-advice system.
+The design rule is:
 
-## Architecture
+> **Data first, interpretation second, narrative last.**
 
-```text
-Data Sources
-  |-- market prices / volume
-  |-- SEC filings / company data
-  |-- macroeconomic data
-  |-- trusted news / RSS
-  |-- financial infrastructure research
-        |
-        v
-Ingestion Layer
-        |
-        v
-Normalized Events + Time Series
-        |
-        +----> Market Analytics
-        |
-        +----> News / Document Retrieval
-        |
-        +----> Agent Tools
-                    |
-                    v
-              Market Observer
-                    |
-          +---------+---------+
-          |                   |
-          v                   v
-     Daily Brief        Learning Mode
-          |                   |
-          +---------+---------+
-                    v
-              Human Review
-                    |
-                    v
-                 GitHub
+This is an educational/research project, not an investment-advice or automated-trading system.
+
+See:
+- [Project brief](projects/market-watcher/README.md)
+- [Architecture](projects/market-watcher/ARCHITECTURE.md)
+
+## Current v0
+
+The initial Python prototype builds a deterministic cross-asset snapshot before any LLM is added.
+
+Default teaching basket:
+- SPY
+- QQQ
+- IWM
+- TLT
+- GLD
+- BTC-USD
+- ^VIX
+
+It calculates:
+- latest close;
+- 1-day return;
+- 5-day return;
+- 20-day return;
+- 20-day moving average;
+- 50-day moving average;
+- latest observation timestamp.
+
+### Run it
+
+Requires Python 3.11+.
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+# Windows: .venv\Scripts\activate
+
+pip install -e ".[dev]"
+market-watcher
+pytest
 ```
 
-## Repository Structure
+The v0 prototype uses Yahoo Finance through `yfinance` for learning/prototyping. That is not a production-grade or guaranteed real-time institutional market-data source.
+
+## Opportunity Radar
+
+The repository has two opportunity pages:
+
+- `resources/opportunities.md` — human-curated, manually verified resources.
+- `resources/opportunities-auto.md` — a machine-generated review queue.
+
+A scheduled GitHub Action runs every Monday and scans a curated group of official pages for likely conferences, programs, contribution pathways, and events.
+
+The scanner is intentionally simple. It discovers candidates; humans verify them.
+
+## Repository map
 
 ```text
 Finance-ai-lab/
 ├── README.md
+├── AGENTS.md
+├── CONTRIBUTING.md
 ├── docs/
-│   ├── meeting-notes/
-│   ├── reading-notes/
-│   ├── architecture/
-│   └── concepts/
-├── agent/
-│   ├── prompts/
-│   ├── tools/
-│   └── workflows/
-├── data/
-│   ├── schemas/
-│   └── samples/
-├── analytics/
-├── app/
-├── tests/
-├── experiments/
+│   ├── AI_AGENT_ONBOARDING.md
+│   ├── orientation.md
+│   └── reading-queue.md
+├── meetings/
+│   ├── TEMPLATE.md
+│   └── 2026-09-16-kickoff.md
+├── projects/
+│   └── market-watcher/
+│       ├── README.md
+│       └── ARCHITECTURE.md
+├── resources/
+│   ├── opportunities.md
+│   ├── opportunities-auto.md
+│   └── opportunity_sources.json
 ├── references/
 │   └── github-projects.md
+├── scripts/
+│   └── opportunity_scanner.py
+├── src/
+│   └── market_watcher/
+├── tests/
 └── .github/
-    └── ISSUE_TEMPLATE/
+    ├── pull_request_template.md
+    ├── ISSUE_TEMPLATE/
+    └── workflows/
+        └── opportunity-radar.yml
 ```
 
-## Working Agreements
+## Working agreements
 
-- Treat claims as hypotheses until supported by data or a primary source.
-- Keep market facts separate from model-generated interpretations.
-- Record source URLs and timestamps for external information.
+- Treat claims as hypotheses until supported by data or a strong source.
+- Keep observed market facts separate from model interpretations.
+- Record source URLs and timestamps for current external information.
 - Prefer reproducible experiments over long debates.
-- Use issues for questions and ideas, branches for experiments, and pull requests for changes worth reviewing.
-- Never put API keys, credentials, account information, or confidential employer information in this repository.
+- Use issues for questions/tasks, branches for non-trivial work, and PRs for review.
+- Coding agents can write code; humans own what gets merged.
+- Never put API keys, credentials, private financial information, or confidential employer material in this repository.
 
-## Meeting Rhythm
+## Six-month north-star question
 
-### Meeting A: Learn
-
-- Life/work updates
-- One reading
-- 20-minute discussion
-- One concept translated into plain English
-- Choose the next engineering question
-
-### Meeting B: Build
-
-- Life/work updates
-- Demo the current prototype
-- Review one pull request
-- Identify one failure or unknown
-- Choose the next experiment
-
-Then repeat.
-
-## Initial Research Themes
-
-- AI agents and agent harnesses
-- Financial data infrastructure
-- Market structure
-- Tokenization and digital assets
-- Payments and settlement
-- Process engineering and automation
-- AI economics and compute markets
-- Risk, governance, and model reliability
-- The changing role of software in financial institutions
-
-## First Milestones
-
-### Milestone 1: Market Dashboard
-
-Display a small watchlist, prices, percentage moves, volume, and a timestamped data source.
-
-### Milestone 2: Event Explainer
-
-When a meaningful move occurs, retrieve relevant recent information and produce an evidence-backed explanation with explicit uncertainty.
-
-### Milestone 3: Learning Mode
-
-The agent explains financial concepts encountered in the data: yield curves, duration, market capitalization, volatility, liquidity, settlement, etc.
-
-### Milestone 4: Research Notebook
-
-Automatically save daily observations, questions, sources, and lessons learned into structured Markdown.
-
-### Milestone 5: Agent Evaluation
-
-Create a small test set for factual accuracy, source attribution, reasoning quality, and avoidance of unsupported conclusions.
+> What can the three of us understand, explain, or build in six months that none of us could do today?
