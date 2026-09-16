@@ -1,0 +1,1255 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Finance AI Lab financial wellness and budgeting experiment." />
+  <title>Money Pulse — Finance AI Lab</title>
+  <style>
+    :root {
+      --bg: #07111f;
+      --bg-2: #0a1826;
+      --panel: rgba(16, 36, 54, 0.72);
+      --panel-soft: rgba(17, 38, 57, 0.48);
+      --line: rgba(163, 203, 229, 0.14);
+      --text: #eef7fb;
+      --muted: #91aabd;
+      --cyan: #58d8ff;
+      --mint: #79efc5;
+      --violet: #b19dff;
+      --amber: #ffd17c;
+      --red: #ff8e8e;
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.34);
+      --radius: 24px;
+      --essentials: 45;
+      --lifestyle: 25;
+      --future: 20;
+      --margin: 10;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 82% 8%, rgba(88, 216, 255, 0.11), transparent 28rem),
+        radial-gradient(circle at 14% 86%, rgba(177, 157, 255, 0.10), transparent 30rem),
+        linear-gradient(135deg, #050b12, var(--bg) 38%, #081622 100%);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .26;
+      background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: linear-gradient(to bottom, black, transparent 92%);
+    }
+
+    button, input, select { font: inherit; }
+
+    button {
+      border: 0;
+      cursor: pointer;
+    }
+
+    .shell {
+      width: min(1440px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 26px 0 56px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .topbar {
+      display: flex;
+      gap: 18px;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 18px;
+      border: 1px solid var(--line);
+      background: rgba(5, 14, 24, .72);
+      backdrop-filter: blur(18px);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 12px;
+      z-index: 20;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 13px;
+      position: relative;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(255,255,255,.6), transparent 18%),
+        linear-gradient(135deg, var(--cyan), var(--mint) 50%, var(--violet));
+      box-shadow: 0 0 40px rgba(88,216,255,.18);
+      flex: 0 0 auto;
+    }
+
+    .mark::after {
+      content: "";
+      position: absolute;
+      inset: 8px;
+      border: 2px solid rgba(7,17,31,.84);
+      border-radius: 9px 9px 3px 9px;
+      transform: rotate(12deg);
+    }
+
+    .eyebrow {
+      color: var(--muted);
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .brand strong {
+      display: block;
+      font-size: 16px;
+      letter-spacing: .01em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .pill, .ghost, .primary, .scenario, .icon-btn {
+      color: var(--text);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.045);
+      border-radius: 999px;
+      padding: 10px 14px;
+      transition: .2s ease;
+    }
+
+    .pill {
+      cursor: default;
+      color: var(--mint);
+      background: rgba(121,239,197,.07);
+      font-size: 12px;
+    }
+
+    .ghost:hover, .scenario:hover, .icon-btn:hover {
+      border-color: rgba(88,216,255,.36);
+      transform: translateY(-1px);
+      background: rgba(88,216,255,.08);
+    }
+
+    .primary {
+      background: linear-gradient(135deg, rgba(88,216,255,.9), rgba(121,239,197,.88));
+      color: #06111b;
+      font-weight: 850;
+      border-color: transparent;
+      box-shadow: 0 10px 32px rgba(88,216,255,.14);
+    }
+
+    .primary:hover { transform: translateY(-1px) scale(1.01); }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap: 20px;
+      margin: 22px 0;
+    }
+
+    .panel {
+      border: 1px solid var(--line);
+      background: linear-gradient(145deg, rgba(18,42,62,.76), rgba(9,24,38,.68));
+      backdrop-filter: blur(18px);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .intro {
+      min-height: 310px;
+      padding: 34px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .intro::after {
+      content: "";
+      position: absolute;
+      width: 440px;
+      height: 440px;
+      border-radius: 50%;
+      right: -180px;
+      top: -190px;
+      background: radial-gradient(circle, rgba(88,216,255,.16), transparent 66%);
+      pointer-events: none;
+    }
+
+    h1 {
+      margin: 12px 0 12px;
+      max-width: 800px;
+      font-size: clamp(40px, 6vw, 76px);
+      line-height: .96;
+      letter-spacing: -.055em;
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, var(--cyan), var(--mint) 52%, var(--violet));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .lede {
+      max-width: 730px;
+      color: #b8ccda;
+      font-size: 17px;
+      line-height: 1.62;
+      margin: 0;
+    }
+
+    .privacy {
+      display: flex;
+      gap: 9px;
+      flex-wrap: wrap;
+      margin-top: 25px;
+    }
+
+    .privacy span {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.032);
+      border-radius: 999px;
+      padding: 8px 11px;
+      color: #91aabd;
+      font-size: 12px;
+    }
+
+    .mission {
+      padding: 26px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .mission blockquote {
+      font-size: 22px;
+      line-height: 1.4;
+      margin: 20px 0 28px;
+      color: #dcecf6;
+    }
+
+    .mission small {
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .dashboard {
+      display: grid;
+      grid-template-columns: minmax(330px, .72fr) minmax(0, 1.28fr);
+      gap: 20px;
+      align-items: start;
+    }
+
+    .pulse-panel {
+      padding: 24px;
+      position: sticky;
+      top: 100px;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .section-head h2 {
+      margin: 4px 0 0;
+      font-size: 22px;
+      letter-spacing: -.02em;
+    }
+
+    .section-head p {
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .pulse {
+      width: min(340px, 86vw);
+      aspect-ratio: 1;
+      margin: 14px auto 24px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      position: relative;
+      background:
+        conic-gradient(
+          from -35deg,
+          var(--cyan) 0 calc(var(--essentials) * 1%),
+          rgba(88,216,255,.15) calc(var(--essentials) * 1%) calc((var(--essentials) + 2) * 1%),
+          var(--violet) calc((var(--essentials) + 2) * 1%) calc((var(--essentials) + var(--lifestyle)) * 1%),
+          rgba(177,157,255,.15) calc((var(--essentials) + var(--lifestyle)) * 1%) calc((var(--essentials) + var(--lifestyle) + 2) * 1%),
+          var(--mint) calc((var(--essentials) + var(--lifestyle) + 2) * 1%) calc((var(--essentials) + var(--lifestyle) + var(--future)) * 1%),
+          rgba(121,239,197,.15) calc((var(--essentials) + var(--lifestyle) + var(--future)) * 1%) calc((var(--essentials) + var(--lifestyle) + var(--future) + 2) * 1%),
+          var(--amber) calc((var(--essentials) + var(--lifestyle) + var(--future) + 2) * 1%) 100%
+        );
+      box-shadow:
+        inset 0 0 70px rgba(255,255,255,.06),
+        0 0 80px rgba(88,216,255,.06);
+    }
+
+    .pulse::before {
+      content: "";
+      position: absolute;
+      inset: 19px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 38% 30%, rgba(88,216,255,.08), transparent 28%),
+        #091725;
+      border: 1px solid rgba(255,255,255,.08);
+      box-shadow: inset 0 0 70px rgba(0,0,0,.38);
+    }
+
+    .pulse-center {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 34px;
+    }
+
+    .pulse-center .big {
+      display: block;
+      font-size: clamp(36px, 5vw, 58px);
+      letter-spacing: -.055em;
+      line-height: 1;
+      margin: 9px 0 8px;
+    }
+
+    .pulse-center .sub {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .legend {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .legend-item {
+      padding: 12px;
+      border-radius: 16px;
+      background: rgba(255,255,255,.035);
+      border: 1px solid var(--line);
+    }
+
+    .legend-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 7px;
+    }
+
+    .legend-item strong {
+      display: block;
+      font-size: 20px;
+      margin-top: 6px;
+    }
+
+    .score-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 16px;
+      align-items: center;
+      padding: 18px;
+      margin-top: 14px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.03);
+    }
+
+    .score-number {
+      width: 68px;
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      font-size: 22px;
+      font-weight: 900;
+      color: #07111f;
+      background: linear-gradient(135deg, var(--mint), var(--cyan));
+    }
+
+    .workspace {
+      display: grid;
+      gap: 20px;
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .metric {
+      min-height: 132px;
+      padding: 18px;
+      border-radius: 20px;
+      border: 1px solid var(--line);
+      background: var(--panel-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .metric::after {
+      content: "";
+      position: absolute;
+      inset: auto -30px -60px auto;
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(88,216,255,.12), transparent 67%);
+    }
+
+    .metric .label {
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      font-weight: 750;
+    }
+
+    .metric strong {
+      display: block;
+      margin-top: 13px;
+      font-size: 28px;
+      letter-spacing: -.04em;
+    }
+
+    .metric small {
+      display: block;
+      color: var(--muted);
+      margin-top: 7px;
+      line-height: 1.4;
+    }
+
+    .controls {
+      padding: 24px;
+    }
+
+    .input-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 7px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 750;
+      letter-spacing: .02em;
+    }
+
+    .field input, .field select {
+      width: 100%;
+      color: var(--text);
+      background: rgba(0,0,0,.17);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 13px 14px;
+      outline: none;
+    }
+
+    .field input:focus, .field select:focus {
+      border-color: rgba(88,216,255,.52);
+      box-shadow: 0 0 0 3px rgba(88,216,255,.08);
+    }
+
+    .scenarios {
+      display: flex;
+      gap: 9px;
+      flex-wrap: wrap;
+      margin-top: 17px;
+    }
+
+    .scenario {
+      font-size: 12px;
+      padding: 9px 12px;
+    }
+
+    .money-map {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .bucket {
+      padding: 18px;
+      min-height: 285px;
+    }
+
+    .bucket-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .bucket-title {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-size: 15px;
+      font-weight: 850;
+    }
+
+    .bucket-total {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .expense-list {
+      display: grid;
+      gap: 9px;
+    }
+
+    .expense {
+      display: grid;
+      grid-template-columns: 1fr auto auto;
+      gap: 9px;
+      align-items: center;
+      padding: 11px 12px;
+      border: 1px solid rgba(255,255,255,.06);
+      background: rgba(255,255,255,.026);
+      border-radius: 14px;
+    }
+
+    .expense-name {
+      min-width: 0;
+    }
+
+    .expense-name strong {
+      font-size: 13px;
+      display: block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .expense-name small { color: var(--muted); }
+
+    .expense-value {
+      font-size: 13px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .icon-btn {
+      width: 28px;
+      height: 28px;
+      padding: 0;
+      border-radius: 9px;
+      display: grid;
+      place-items: center;
+      color: #91aabd;
+    }
+
+    .empty {
+      color: var(--muted);
+      border: 1px dashed var(--line);
+      border-radius: 14px;
+      padding: 16px;
+      text-align: center;
+      font-size: 12px;
+    }
+
+    .lab-row {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 20px;
+    }
+
+    .insights, .experiment {
+      padding: 24px;
+    }
+
+    .insight-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .insight {
+      padding: 13px 14px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.03);
+      border: 1px solid var(--line);
+      line-height: 1.5;
+      color: #c2d6e3;
+      font-size: 13px;
+    }
+
+    .insight strong { color: var(--text); }
+
+    .stress {
+      margin-top: 18px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+    }
+
+    input[type="range"] {
+      width: 100%;
+      accent-color: var(--cyan);
+    }
+
+    .stress-line {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 8px;
+    }
+
+    .stress-result {
+      font-size: 30px;
+      letter-spacing: -.04em;
+      margin: 12px 0 4px;
+    }
+
+    .add-form {
+      display: grid;
+      grid-template-columns: 1.3fr .8fr .8fr auto;
+      gap: 9px;
+      margin-top: 14px;
+    }
+
+    .add-form input, .add-form select {
+      min-width: 0;
+      color: var(--text);
+      background: rgba(0,0,0,.17);
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      padding: 11px 12px;
+    }
+
+    .footer {
+      margin-top: 24px;
+      padding: 19px 4px 4px;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      color: #7892a6;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .negative { color: var(--red) !important; }
+    .positive { color: var(--mint) !important; }
+
+    @media (max-width: 1050px) {
+      .hero, .dashboard, .lab-row { grid-template-columns: 1fr; }
+      .pulse-panel { position: static; }
+      .metrics { grid-template-columns: repeat(2, 1fr); }
+      .money-map { grid-template-columns: 1fr; }
+      .input-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 680px) {
+      .shell { width: min(100% - 18px, 1440px); padding-top: 9px; }
+      .topbar { position: static; align-items: flex-start; }
+      .top-actions .pill, .top-actions .ghost { display: none; }
+      .intro { padding: 25px; }
+      .mission { padding: 22px; }
+      .metrics, .input-grid { grid-template-columns: 1fr; }
+      .add-form { grid-template-columns: 1fr 1fr; }
+      .add-form button { grid-column: 1 / -1; }
+      .legend { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="mark" aria-hidden="true"></div>
+        <div>
+          <div class="eyebrow">Finance AI Lab · Experiment 02</div>
+          <strong>Money Pulse / Financial Wellness Lab</strong>
+        </div>
+      </div>
+      <div class="top-actions">
+        <span class="pill">LOCAL DATA ONLY</span>
+        <button class="ghost" id="resetBtn" type="button">Reset demo</button>
+        <button class="primary" type="button" onclick="document.querySelector('#lab').scrollIntoView()">Open lab ↓</button>
+      </div>
+    </header>
+
+    <section class="hero">
+      <article class="panel intro">
+        <div class="eyebrow">A tangible fintech experiment</div>
+        <h1>See your money as a <span class="gradient-text">living system.</span></h1>
+        <p class="lede">
+          Money Pulse turns a monthly budget into an interactive system map: what keeps life running,
+          what makes life enjoyable, what builds the future, and what remains as breathing room.
+          Change one assumption and watch the whole system respond.
+        </p>
+        <div class="privacy">
+          <span>Browser-only storage</span>
+          <span>No bank connection</span>
+          <span>No account credentials</span>
+          <span>Built to be redesigned</span>
+        </div>
+      </article>
+
+      <aside class="panel mission">
+        <div>
+          <div class="eyebrow">Design thesis</div>
+          <blockquote>
+            “A budget should not only tell you what you spent. It should help you understand the
+            structure, resilience, and trade-offs of your financial life.”
+          </blockquote>
+        </div>
+        <small>
+          Prototype wellness metrics are educational heuristics, not financial advice. The lab is
+          intentionally transparent so the group can debate the assumptions and improve them.
+        </small>
+      </aside>
+    </section>
+
+    <section class="dashboard" id="lab">
+      <aside class="panel pulse-panel">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Monthly system map</div>
+            <h2>Your Money Pulse</h2>
+          </div>
+        </div>
+
+        <div class="pulse" id="pulse">
+          <div class="pulse-center">
+            <div class="eyebrow">Breathing room</div>
+            <strong class="big" id="marginDisplay">$0</strong>
+            <div class="sub">income left after listed expenses<br />and planned savings</div>
+          </div>
+        </div>
+
+        <div class="legend">
+          <div class="legend-item">
+            <div class="legend-top"><span><i class="dot" style="background:var(--cyan)"></i>Essentials</span><span id="essentialPct">0%</span></div>
+            <strong id="essentialTotal">$0</strong>
+          </div>
+          <div class="legend-item">
+            <div class="legend-top"><span><i class="dot" style="background:var(--violet)"></i>Lifestyle</span><span id="lifestylePct">0%</span></div>
+            <strong id="lifestyleTotal">$0</strong>
+          </div>
+          <div class="legend-item">
+            <div class="legend-top"><span><i class="dot" style="background:var(--mint)"></i>Future</span><span id="futurePct">0%</span></div>
+            <strong id="futureTotal">$0</strong>
+          </div>
+          <div class="legend-item">
+            <div class="legend-top"><span><i class="dot" style="background:var(--amber)"></i>Margin</span><span id="marginPct">0%</span></div>
+            <strong id="marginLegend">$0</strong>
+          </div>
+        </div>
+
+        <div class="score-row">
+          <div>
+            <div class="eyebrow">Prototype wellness signal</div>
+            <strong id="scoreLabel">Learning</strong>
+            <div class="sub" id="scoreExplain">Calculated from margin, savings rate, essentials load, and emergency runway.</div>
+          </div>
+          <div class="score-number" id="scoreNumber">—</div>
+        </div>
+      </aside>
+
+      <div class="workspace">
+        <section class="metrics">
+          <article class="metric">
+            <div class="label">Take-home income</div>
+            <strong id="incomeMetric">$0</strong>
+            <small>Monthly cash available to allocate.</small>
+          </article>
+          <article class="metric">
+            <div class="label">Savings rate</div>
+            <strong id="savingsRateMetric">0%</strong>
+            <small>Planned future-building ÷ take-home income.</small>
+          </article>
+          <article class="metric">
+            <div class="label">Essential load</div>
+            <strong id="essentialLoadMetric">0%</strong>
+            <small>How much income is committed before lifestyle choices.</small>
+          </article>
+          <article class="metric">
+            <div class="label">Emergency runway</div>
+            <strong id="runwayMetric">0 mo</strong>
+            <small>Emergency fund ÷ monthly essentials.</small>
+          </article>
+        </section>
+
+        <section class="panel controls">
+          <div class="section-head">
+            <div>
+              <div class="eyebrow">Assumptions</div>
+              <h2>Shape the system</h2>
+              <p>Change the high-level inputs, then add or remove individual monthly expenses below.</p>
+            </div>
+          </div>
+
+          <div class="input-grid">
+            <div class="field">
+              <label for="incomeInput">Monthly take-home income</label>
+              <input id="incomeInput" type="number" min="0" step="50" />
+            </div>
+            <div class="field">
+              <label for="plannedSavingsInput">Planned monthly savings / investing</label>
+              <input id="plannedSavingsInput" type="number" min="0" step="25" />
+            </div>
+            <div class="field">
+              <label for="emergencyInput">Current emergency fund</label>
+              <input id="emergencyInput" type="number" min="0" step="100" />
+            </div>
+          </div>
+
+          <div class="scenarios">
+            <button class="scenario" type="button" data-scenario="rent">Stress: rent + $300</button>
+            <button class="scenario" type="button" data-scenario="lifestyle">Experiment: lifestyle − 15%</button>
+            <button class="scenario" type="button" data-scenario="income">Scenario: income + 5%</button>
+            <button class="scenario" type="button" data-scenario="save">Scenario: future + $150</button>
+          </div>
+        </section>
+
+        <section class="money-map" aria-label="Expense buckets">
+          <article class="panel bucket">
+            <div class="bucket-header">
+              <div class="bucket-title"><i class="dot" style="background:var(--cyan)"></i> Essentials</div>
+              <div class="bucket-total" id="essentialBucketTotal">$0</div>
+            </div>
+            <div class="expense-list" id="essentialList"></div>
+          </article>
+
+          <article class="panel bucket">
+            <div class="bucket-header">
+              <div class="bucket-title"><i class="dot" style="background:var(--violet)"></i> Lifestyle</div>
+              <div class="bucket-total" id="lifestyleBucketTotal">$0</div>
+            </div>
+            <div class="expense-list" id="lifestyleList"></div>
+          </article>
+
+          <article class="panel bucket">
+            <div class="bucket-header">
+              <div class="bucket-title"><i class="dot" style="background:var(--mint)"></i> Future</div>
+              <div class="bucket-total" id="futureBucketTotal">$0</div>
+            </div>
+            <div class="expense-list" id="futureList"></div>
+          </article>
+        </section>
+
+        <section class="panel experiment">
+          <div class="section-head">
+            <div>
+              <div class="eyebrow">Add a monthly flow</div>
+              <h2>Change the map</h2>
+              <p>Use the three buckets as hypotheses. The group can redesign these categories later.</p>
+            </div>
+          </div>
+
+          <form class="add-form" id="expenseForm">
+            <input id="expenseName" aria-label="Expense name" placeholder="e.g. Student loan" required />
+            <input id="expenseAmount" aria-label="Monthly amount" type="number" min="0" step="1" placeholder="$ / month" required />
+            <select id="expenseBucket" aria-label="Expense bucket">
+              <option value="essentials">Essentials</option>
+              <option value="lifestyle">Lifestyle</option>
+              <option value="future">Future</option>
+            </select>
+            <button class="primary" type="submit">Add flow</button>
+          </form>
+        </section>
+
+        <section class="lab-row">
+          <article class="panel insights">
+            <div class="section-head">
+              <div>
+                <div class="eyebrow">Deterministic coaching layer</div>
+                <h2>What the system notices</h2>
+              </div>
+            </div>
+            <div class="insight-list" id="insightList"></div>
+          </article>
+
+          <article class="panel experiment">
+            <div class="section-head">
+              <div>
+                <div class="eyebrow">Resilience experiment</div>
+                <h2>Income shock simulator</h2>
+                <p>Explore sensitivity instead of treating one monthly budget as permanent truth.</p>
+              </div>
+            </div>
+
+            <div class="stress">
+              <div class="stress-line">
+                <span>Income reduction</span>
+                <strong id="shockLabel">10%</strong>
+              </div>
+              <input id="shockRange" type="range" min="0" max="40" step="1" value="10" />
+              <div class="stress-result" id="shockResult">$0</div>
+              <div class="sub" id="shockText">breathing room after the simulated income change</div>
+            </div>
+          </article>
+        </section>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span>Finance AI Lab · Financial Wellness Experiment 02</span>
+      <span>Data persists only in this browser via localStorage. No network requests are made by this prototype.</span>
+    </footer>
+  </main>
+
+  <script>
+    const STORAGE_KEY = "finance-ai-lab-money-pulse-v1";
+
+    const demoState = {
+      income: 4600,
+      plannedSavings: 650,
+      emergencyFund: 7200,
+      expenses: [
+        { id: 1, name: "Rent", amount: 1350, bucket: "essentials" },
+        { id: 2, name: "Groceries", amount: 420, bucket: "essentials" },
+        { id: 3, name: "Utilities + internet", amount: 210, bucket: "essentials" },
+        { id: 4, name: "Transportation", amount: 240, bucket: "essentials" },
+        { id: 5, name: "Insurance", amount: 160, bucket: "essentials" },
+        { id: 6, name: "Dining / coffee", amount: 190, bucket: "lifestyle" },
+        { id: 7, name: "Entertainment", amount: 120, bucket: "lifestyle" },
+        { id: 8, name: "Trips / fun fund", amount: 130, bucket: "lifestyle" },
+        { id: 9, name: "Debt payoff", amount: 300, bucket: "future" }
+      ]
+    };
+
+    let state = loadState();
+
+    const $ = (id) => document.getElementById(id);
+    const money = (value) => new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+      maximumFractionDigits: 0
+    }).format(Number.isFinite(value) ? value : 0);
+
+    const pct = (value) => `${Math.round((Number.isFinite(value) ? value : 0) * 100)}%`;
+    const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+
+    function cloneDemo() {
+      return JSON.parse(JSON.stringify(demoState));
+    }
+
+    function loadState() {
+      try {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (!saved) return cloneDemo();
+        const parsed = JSON.parse(saved);
+        if (!parsed || !Array.isArray(parsed.expenses)) return cloneDemo();
+        return parsed;
+      } catch {
+        return cloneDemo();
+      }
+    }
+
+    function saveState() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    }
+
+    function totals() {
+      const buckets = { essentials: 0, lifestyle: 0, future: 0 };
+      state.expenses.forEach((expense) => {
+        buckets[expense.bucket] = (buckets[expense.bucket] || 0) + Number(expense.amount || 0);
+      });
+
+      buckets.future += Number(state.plannedSavings || 0);
+
+      const spent = buckets.essentials + buckets.lifestyle + buckets.future;
+      const margin = Number(state.income || 0) - spent;
+
+      return { ...buckets, spent, margin };
+    }
+
+    function wellnessScore(t) {
+      const income = Math.max(Number(state.income || 0), 1);
+      const savingsRate = t.future / income;
+      const essentialRate = t.essentials / income;
+      const marginRate = t.margin / income;
+      const runway = t.essentials > 0 ? Number(state.emergencyFund || 0) / t.essentials : 0;
+
+      let score = 50;
+
+      score += clamp((savingsRate - 0.10) * 110, -12, 18);
+      score += clamp((0.60 - essentialRate) * 65, -18, 14);
+      score += clamp(marginRate * 55, -25, 12);
+      score += clamp((runway - 1) * 5, -8, 14);
+
+      return Math.round(clamp(score, 0, 100));
+    }
+
+    function scoreLabel(score) {
+      if (score >= 80) return ["Resilient", "The current assumptions leave meaningful future-building capacity and breathing room."];
+      if (score >= 65) return ["Balanced", "The system has room to work with, though some trade-offs remain visible."];
+      if (score >= 50) return ["Tight but workable", "The structure functions, but changes to income or fixed costs could matter quickly."];
+      return ["Under pressure", "The current assumptions produce limited or negative breathing room. Treat this as a prompt to inspect the structure."];
+    }
+
+    function renderExpenses() {
+      ["essentials", "lifestyle", "future"].forEach((bucket) => {
+        const target = $(bucket.slice(0, -1) + "List") || $(bucket + "List");
+        const rows = state.expenses.filter((item) => item.bucket === bucket);
+
+        if (!rows.length) {
+          target.innerHTML = '<div class="empty">No flows in this bucket yet.</div>';
+          return;
+        }
+
+        target.innerHTML = rows.map((item) => `
+          <div class="expense">
+            <div class="expense-name">
+              <strong>${escapeHtml(item.name)}</strong>
+              <small>monthly</small>
+            </div>
+            <span class="expense-value">${money(Number(item.amount))}</span>
+            <button class="icon-btn" type="button" aria-label="Remove ${escapeHtml(item.name)}" data-delete="${item.id}">×</button>
+          </div>
+        `).join("");
+      });
+
+      document.querySelectorAll("[data-delete]").forEach((button) => {
+        button.addEventListener("click", () => {
+          const id = Number(button.dataset.delete);
+          state.expenses = state.expenses.filter((item) => item.id !== id);
+          saveState();
+          render();
+        });
+      });
+    }
+
+    function renderInsights(t) {
+      const income = Math.max(Number(state.income || 0), 1);
+      const essentialRate = t.essentials / income;
+      const savingsRate = t.future / income;
+      const runway = t.essentials > 0 ? Number(state.emergencyFund || 0) / t.essentials : 0;
+      const largest = [...state.expenses].sort((a, b) => Number(b.amount) - Number(a.amount))[0];
+
+      const insights = [];
+
+      if (t.margin < 0) {
+        insights.push(`<strong>Cash-flow pressure:</strong> listed monthly commitments exceed take-home income by ${money(Math.abs(t.margin))}. The prototype treats this as the first constraint to investigate.`);
+      } else {
+        insights.push(`<strong>Monthly flexibility:</strong> ${money(t.margin)} remains unassigned after the current plan. That is ${pct(t.margin / income)} of take-home income.`);
+      }
+
+      insights.push(`<strong>Essential load:</strong> essentials consume ${pct(essentialRate)} of take-home income. This is descriptive, not a universal pass/fail threshold.`);
+
+      insights.push(`<strong>Future-building:</strong> the current plan directs ${pct(savingsRate)} of take-home income to savings, investing, and future-oriented flows.`);
+
+      if (runway === Infinity) {
+        insights.push("<strong>Emergency runway:</strong> essentials are currently zero, so runway is not meaningful.");
+      } else {
+        insights.push(`<strong>Emergency runway:</strong> the entered emergency fund represents about ${runway.toFixed(1)} months of listed essentials.`);
+      }
+
+      if (largest) {
+        insights.push(`<strong>Largest individual flow:</strong> ${escapeHtml(largest.name)} at ${money(Number(largest.amount))}/month. Large recurring items often dominate what is structurally possible elsewhere.`);
+      }
+
+      $("insightList").innerHTML = insights.map((text) => `<div class="insight">${text}</div>`).join("");
+    }
+
+    function renderShock(t) {
+      const shock = Number($("shockRange").value || 0) / 100;
+      const shockedIncome = Number(state.income || 0) * (1 - shock);
+      const shockedMargin = shockedIncome - t.spent;
+
+      $("shockLabel").textContent = pct(shock);
+      $("shockResult").textContent = money(shockedMargin);
+      $("shockResult").classList.toggle("negative", shockedMargin < 0);
+      $("shockResult").classList.toggle("positive", shockedMargin >= 0);
+      $("shockText").textContent = shockedMargin >= 0
+        ? "breathing room after the simulated income change"
+        : "monthly shortfall after the simulated income change";
+    }
+
+    function render() {
+      const t = totals();
+      const income = Math.max(Number(state.income || 0), 0);
+      const denominator = Math.max(income, 1);
+      const essentialPct = clamp(t.essentials / denominator, 0, 1);
+      const lifestylePct = clamp(t.lifestyle / denominator, 0, 1);
+      const futurePct = clamp(t.future / denominator, 0, 1);
+      const marginPositivePct = clamp(Math.max(t.margin, 0) / denominator, 0, 1);
+
+      $("incomeInput").value = state.income;
+      $("plannedSavingsInput").value = state.plannedSavings;
+      $("emergencyInput").value = state.emergencyFund;
+
+      $("marginDisplay").textContent = money(t.margin);
+      $("marginDisplay").classList.toggle("negative", t.margin < 0);
+      $("marginDisplay").classList.toggle("positive", t.margin >= 0);
+
+      $("incomeMetric").textContent = money(income);
+      $("savingsRateMetric").textContent = pct(t.future / denominator);
+      $("essentialLoadMetric").textContent = pct(t.essentials / denominator);
+      $("runwayMetric").textContent = t.essentials > 0
+        ? `${(Number(state.emergencyFund || 0) / t.essentials).toFixed(1)} mo`
+        : "—";
+
+      $("essentialTotal").textContent = money(t.essentials);
+      $("lifestyleTotal").textContent = money(t.lifestyle);
+      $("futureTotal").textContent = money(t.future);
+      $("marginLegend").textContent = money(t.margin);
+      $("essentialPct").textContent = pct(essentialPct);
+      $("lifestylePct").textContent = pct(lifestylePct);
+      $("futurePct").textContent = pct(futurePct);
+      $("marginPct").textContent = t.margin >= 0 ? pct(marginPositivePct) : "shortfall";
+
+      $("essentialBucketTotal").textContent = money(t.essentials);
+      $("lifestyleBucketTotal").textContent = money(t.lifestyle);
+      $("futureBucketTotal").textContent = money(t.future);
+
+      const ringTotal = essentialPct + lifestylePct + futurePct + marginPositivePct;
+      const scale = ringTotal > 1 ? 100 / ringTotal : 100;
+      const e = essentialPct * scale;
+      const l = lifestylePct * scale;
+      const f = futurePct * scale;
+      const m = Math.max(100 - e - l - f, 0);
+      document.documentElement.style.setProperty("--essentials", e.toFixed(2));
+      document.documentElement.style.setProperty("--lifestyle", l.toFixed(2));
+      document.documentElement.style.setProperty("--future", f.toFixed(2));
+      document.documentElement.style.setProperty("--margin", m.toFixed(2));
+
+      const score = wellnessScore(t);
+      const [label, explanation] = scoreLabel(score);
+      $("scoreNumber").textContent = score;
+      $("scoreLabel").textContent = label;
+      $("scoreExplain").textContent = explanation;
+
+      renderExpenses();
+      renderInsights(t);
+      renderShock(t);
+    }
+
+    function escapeHtml(value) {
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function bindNumberInput(id, key) {
+      $(id).addEventListener("input", (event) => {
+        state[key] = Math.max(0, Number(event.target.value || 0));
+        saveState();
+        render();
+      });
+    }
+
+    bindNumberInput("incomeInput", "income");
+    bindNumberInput("plannedSavingsInput", "plannedSavings");
+    bindNumberInput("emergencyInput", "emergencyFund");
+
+    $("shockRange").addEventListener("input", () => renderShock(totals()));
+
+    $("expenseForm").addEventListener("submit", (event) => {
+      event.preventDefault();
+      const name = $("expenseName").value.trim();
+      const amount = Number($("expenseAmount").value || 0);
+      const bucket = $("expenseBucket").value;
+
+      if (!name || amount <= 0) return;
+
+      state.expenses.push({
+        id: Date.now(),
+        name,
+        amount,
+        bucket
+      });
+
+      $("expenseName").value = "";
+      $("expenseAmount").value = "";
+      saveState();
+      render();
+    });
+
+    document.querySelectorAll("[data-scenario]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const scenario = button.dataset.scenario;
+
+        if (scenario === "rent") {
+          const rent = state.expenses.find((item) => item.name.toLowerCase().includes("rent"));
+          if (rent) rent.amount = Number(rent.amount) + 300;
+          else state.expenses.push({ id: Date.now(), name: "Rent stress test", amount: 300, bucket: "essentials" });
+        }
+
+        if (scenario === "lifestyle") {
+          state.expenses = state.expenses.map((item) => item.bucket === "lifestyle"
+            ? { ...item, amount: Math.round(Number(item.amount) * 0.85) }
+            : item);
+        }
+
+        if (scenario === "income") {
+          state.income = Math.round(Number(state.income) * 1.05);
+        }
+
+        if (scenario === "save") {
+          state.plannedSavings = Number(state.plannedSavings) + 150;
+        }
+
+        saveState();
+        render();
+      });
+    });
+
+    $("resetBtn").addEventListener("click", () => {
+      state = cloneDemo();
+      localStorage.removeItem(STORAGE_KEY);
+      render();
+    });
+
+    render();
+  </script>
+</body>
+</html>
