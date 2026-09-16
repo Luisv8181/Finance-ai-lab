@@ -1,21 +1,34 @@
 # GitHub Projects to Study
 
-These are reference projects, not dependencies. We use them to understand patterns, tradeoffs, and what has already been attempted.
+These are reference implementations, not dependencies. The goal is to inspect architecture, identify useful patterns, and decide what we would build differently.
 
-## Financial research / agents
+## Financial agents
 
-- [Financial-Stock-Analysis-Agent](https://github.com/yagami24/Financial-Stock-Analysis-Agent) - stock analysis agent example.
-- [FinanceGPT: AI-Powered Financial Research Assistant](https://github.com/sai24k/FinanceGPT-AI-Powered-Financial-Research-Assistant-with-Multi-Agent-Architecture) - multi-agent financial research architecture.
-- [mcp-financial-agent-finbot](https://github.com/muskangupta1906/mcp-financial-agent-finbot) - financial agent using MCP patterns.
-- [financekit-mcp](https://github.com/vdalhambra/financekit-mcp) - MCP tooling oriented toward finance data.
-- [awesome-ai-trading-research](https://github.com/ohselab/awesome-ai-trading-research) - collection of AI/trading research projects.
-- [Octagon A2A Agents](https://github.com/OctagonAI/octagon-a2a-agents) - useful reference for agent-to-agent patterns.
+- https://github.com/yagami24/Financial-Stock-Analysis-Agent
+- https://github.com/sai24k/FinanceGPT-AI-Powered-Financial-Research-Assistant-with-Multi-Agent-Architecture
+- https://github.com/Deepak-gogula03/Production-Ready-Multi-Agent-Financial-AI-Assistant-using-PhiData-Groq-Llama-3.1
+- https://github.com/airamare01/stock-market-garp-agent
 
-## Questions for each reference repo
+## Finance + MCP
 
-1. What problem is it solving?
-2. What data does it trust?
-3. What tools can the agent call?
-4. How does it separate facts from model-generated interpretation?
-5. How is accuracy evaluated?
-6. What would we keep, change, or reject?
+- https://github.com/vdalhambra/financekit-mcp
+- https://github.com/muskangupta1906/mcp-financial-agent-finbot
+- https://github.com/AryaSingh2001/financial-analyst-mcp1
+
+## Research collections
+
+- https://github.com/ohselab/awesome-ai-trading-research
+- https://github.com/OctagonAI/octagon-a2a-agents
+
+## Questions to ask when reviewing a repository
+
+1. What data sources does it trust?
+2. How does it represent financial observations?
+3. Which tasks are deterministic and which are delegated to an LLM?
+4. How are sources and timestamps preserved?
+5. How does it handle stale or conflicting data?
+6. What prevents hallucinated financial claims?
+7. What is actually agentic versus ordinary API orchestration?
+8. What would we keep, remove, or redesign?
+9. Could we reproduce the core idea in one meeting?
+10. What can we learn from the project's failures as well as its features?
