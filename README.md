@@ -10,6 +10,7 @@ The lab is part discussion group, part research notebook, and part tiny engineer
 - [Kickoff agenda](meetings/2026-09-16-kickoff.md)
 - [Orientation and recurring meeting format](docs/orientation.md)
 - [Reading queue](docs/reading-queue.md)
+- [Six-month / 12-meeting roadmap](docs/6-month-roadmap.md)
 - [Market Watcher project](projects/market-watcher/README.md)
 
 **For each person's AI coding agent**
@@ -19,6 +20,7 @@ The lab is part discussion group, part research notebook, and part tiny engineer
 
 **For getting deeper into the space**
 - [Conferences, pathways, communities, and videos](resources/opportunities.md)
+- [Learning library: finance, infrastructure, and AI](resources/learning-library.md)
 - [Automatically refreshed opportunity review queue](resources/opportunities-auto.md)
 - [GitHub projects worth studying](references/github-projects.md)
 
