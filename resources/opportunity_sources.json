@@ -1,0 +1,42 @@
+[
+  {
+    "name": "FINOS Events",
+    "url": "https://www.finos.org/hosted-events",
+    "keywords": ["AI", "finance", "open source", "CDM", "token", "seminar", "forum", "webinar", "hackathon"]
+  },
+  {
+    "name": "FINOS Community",
+    "url": "https://www.finos.org/engage-with-our-community",
+    "keywords": ["contribute", "community", "good first", "project", "calendar", "Slack"]
+  },
+  {
+    "name": "FINOS Talent",
+    "url": "https://talent.finos.org/",
+    "keywords": ["intern", "training", "talent", "upskill", "opportunity", "program"]
+  },
+  {
+    "name": "FINOS AI",
+    "url": "https://ai.finos.org/",
+    "keywords": ["AI", "agent", "hackathon", "get involved", "project"]
+  },
+  {
+    "name": "Sibos",
+    "url": "https://www.sibos.com/",
+    "keywords": ["register", "conference", "AI", "digital assets", "payments", "securities"]
+  },
+  {
+    "name": "Money20/20 USA",
+    "url": "https://us.money2020.com/",
+    "keywords": ["register", "program", "AI", "fintech", "payments", "startup"]
+  },
+  {
+    "name": "NVIDIA GTC",
+    "url": "https://www.nvidia.com/gtc/events/",
+    "keywords": ["register", "workshop", "AI", "agent", "developer", "conference"]
+  },
+  {
+    "name": "Break Through Tech AI",
+    "url": "https://www.breakthroughtech.org/programs/the-ai-program/",
+    "keywords": ["application", "apply", "interest", "program", "AI"]
+  }
+]
