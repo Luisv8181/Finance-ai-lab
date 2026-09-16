@@ -16,6 +16,7 @@ The lab is part discussion group, part research notebook, and part tiny engineer
 - [Reading queue](docs/reading-queue.md)
 - [Six-month / 12-meeting roadmap](docs/6-month-roadmap.md)
 - [Market Watcher project](projects/market-watcher/README.md)
+- [Money Pulse — Financial Wellness Lab](projects/financial-wellness-lab/README.md)
 
 **For each person's AI coding agent**
 - [AI agent + GitHub onboarding](docs/AI_AGENT_ONBOARDING.md)
@@ -101,6 +102,39 @@ pytest
 
 The v0 prototype uses Yahoo Finance through `yfinance` for learning/prototyping. That is not a production-grade or guaranteed real-time institutional market-data source.
 
+
+## Second flagship experiment: Money Pulse / Financial Wellness Lab
+
+<p align="center">
+  <img src="assets/money-pulse-preview.svg" alt="Money Pulse financial wellness dashboard prototype" width="100%" />
+</p>
+
+Finance AI Lab is not only about institutional market infrastructure. **Money Pulse** is a consumer-fintech experiment exploring how software can make personal cash flow, resilience, goals, and trade-offs easier to understand.
+
+The current prototype is a standalone interactive HTML app with:
+
+- editable take-home income;
+- planned savings/investing;
+- emergency-fund runway;
+- add/remove monthly expenses;
+- Essentials / Lifestyle / Future system mapping;
+- a live circular “Money Pulse” visualization;
+- monthly breathing room;
+- a transparent prototype wellness signal;
+- deterministic financial observations;
+- one-click scenarios;
+- an income-shock simulator;
+- browser-local persistence.
+
+No bank connection, account credentials, backend, or external API is used in v0.
+
+**Open the project:** [Financial Wellness Lab](projects/financial-wellness-lab/README.md)  
+**Interactive file:** `projects/financial-wellness-lab/index.html`
+
+To interact with it immediately, clone/download the repo and open the HTML file in a browser. The project is also structured so it can later be published as a small web app.
+
+The point is not to declare a “correct” budgeting philosophy. The point is to give the group something tangible to critique and improve: classification, privacy, metrics, scenario modeling, transaction ingestion, AI explanations, shared-household finances, debt, goals, and eventually safe financial-data integrations.
+
 ## Opportunity Radar
 
 The repository has two opportunity pages:
@@ -127,9 +161,15 @@ Finance-ai-lab/
 │   ├── TEMPLATE.md
 │   └── 2026-09-16-kickoff.md
 ├── projects/
-│   └── market-watcher/
+│   ├── market-watcher/
+│   │   ├── README.md
+│   │   └── ARCHITECTURE.md
+│   └── financial-wellness-lab/
 │       ├── README.md
-│       └── ARCHITECTURE.md
+│       └── index.html
+├── assets/
+│   ├── finance-ai-lab-banner.svg
+│   └── money-pulse-preview.svg
 ├── resources/
 │   ├── opportunities.md
 │   ├── opportunities-auto.md
