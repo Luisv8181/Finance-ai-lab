@@ -107,15 +107,20 @@ def _fmt_num(val: float) -> str:
     return f"{val:,.2f}"
 
 
-def critique_evidence_with_gemini(bundle: EvidenceBundle, api_key: str) -> str:
-    """Call Google Gemini 2.5 Flash as an Evidence Critic and Narrative Buster.
-    
+def critique_evidence_with_gemini(
+    bundle: EvidenceBundle,
+    api_key: str,
+    model: str | None = None,
+) -> str:
+    """Call Google Gemini as an Evidence Critic and Narrative Buster.
+
     Adheres strictly to AGENTS.md:
     - Does not invent market numbers or citations.
     - Tests chronology (did news precede the move?).
     - Evaluates broad index correlation vs single-factor headlines.
     """
-    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={api_key}"
+    selected_model = model or os.environ.get("GEMINI_MODEL") or "gemini-flash-latest"
+    url = f"https://generativelanguage.googleapis.com/v1beta/models/{selected_model}:generateContent?key={api_key}"
 
     # Build structured text representation of the bundle
     moves_summary = []
@@ -271,9 +276,10 @@ def render_evidence_report(bundle: EvidenceBundle, enable_ai: bool = True) -> st
     api_key = get_gemini_api_key() if enable_ai else None
 
     if api_key:
-        lines.append("### Evidence Critic / Narrative Buster (Powered by BYOK Gemini 2.5 Flash)")
+        active_model = os.environ.get("GEMINI_MODEL") or "gemini-flash-latest"
+        lines.append(f"### Evidence Critic / Narrative Buster (Powered by BYOK {active_model})")
         lines.append("")
-        critique = critique_evidence_with_gemini(bundle, api_key)
+        critique = critique_evidence_with_gemini(bundle, api_key, model=active_model)
         lines.append(critique)
     else:
         # Fallback to transparent deterministic rule-based hypotheses

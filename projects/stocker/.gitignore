@@ -1,0 +1,9 @@
+# Stocker Project
+.env
+api-key
+logs/
+__pycache__/
+*.pyc
+*.log
+models_list.txt
+list_models.py

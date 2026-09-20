@@ -1,0 +1,42 @@
+# Stocker AI Agent Breakdown
+
+- [x] Planning Phase
+  - [x] Gather requirements
+  - [x] Draft system architecture & data sources
+  - [x] Get user approval on implementation plan
+- [/] Setup Phase
+  - [/] Initialize Python project in `stocker`
+  - [ ] Install dependencies (`yfinance`, `schedule`, `requests`, `google-generativeai`, `python-dotenv`)
+  - [ ] Set up environment variables config
+- [x] Intelligence & Data Gathering
+  - [x] Market Data module (track target stocks using `yfinance`)
+  - [x] Vane Search & Macro module (integrate Vane/Perplexica for citations)
+  - [x] Alternative Data module (Reddit sentiment, Politician trades APIs)
+  - [x] Autonomous Knowledge Discovery (AI identifies new trends/tickers)
+- [x] AI Agent Report Generation
+  - [x] Implement AI LLM interface (Local Gemma 4 + Google Gemini API)
+  - [x] Design prompts for comprehensive daily reporting
+  - [x] Add educational links compilation logic
+- [x] Agent Loop & Automation
+  - [x] Implement 9:30 AM (Market Open) and 4:30 PM (Market Close) schedules
+  - [x] File output generation (Markdown/PDF)
+- [x] Email delivery system integration
+- [x] Verification
+  - [x] Test data extraction
+  - [x] Test report generation
+- [x] UI Dashboard Development
+  - [x] Design "Holographic Blue Tablet" interface
+  - [x] Implement HTML/CSS structure with Sci-Fi aesthetics
+  - [x] Add Markdown rendering logic
+  - [x] Integrate with Python backend (report listing)
+- [x] Security Hardening
+  - [x] Block sensitive files from being served (.env, api-key, logs)
+  - [x] Add .gitignore to prevent accidental commits
+  - [x] Move API key to .env only
+- [x] Feature Improvements
+  - [x] Color-coded gains/losses in dashboard
+  - [x] Animated stock ticker bar
+  - [x] Report history sidebar
+  - [x] SQLite knowledge base
+  - [x] Weekly deep research scheduled task
+  - [x] Real politician trade data

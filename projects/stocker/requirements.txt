@@ -1,0 +1,6 @@
+yfinance
+schedule
+requests
+google-generativeai
+python-dotenv
+duckduckgo-search

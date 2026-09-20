@@ -766,9 +766,74 @@
       max-height: 320px;
       overflow-y: auto;
     }
+
+    /* Passive Moving Market Ticker Tape */
+    .ticker-wrap {
+      width: 100%;
+      overflow: hidden;
+      background: rgba(5, 13, 23, 0.95);
+      border-bottom: 1px solid var(--line);
+      height: 36px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.35);
+    }
+    .ticker-move {
+      display: flex;
+      white-space: nowrap;
+      animation: tickerSlide 35s linear infinite;
+    }
+    .ticker-wrap:hover .ticker-move {
+      animation-play-state: paused;
+    }
+    @keyframes tickerSlide {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .ticker-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 0 24px;
+      font-size: 12px;
+      font-weight: 600;
+      border-right: 1px solid rgba(255,255,255,0.06);
+    }
+    .ticker-sym {
+      color: var(--cyan);
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+    .ticker-price {
+      color: #eef7fb;
+    }
   </style>
 </head>
 <body>
+  <!-- Passive Market Ticker Tape -->
+  <div class="ticker-wrap" aria-label="Live Market Ticker">
+    <div class="ticker-move" id="tickerMove">
+      <div class="ticker-item"><span class="ticker-sym">SPY</span> <span class="ticker-price">$761.69</span> <span class="negative">-0.12%</span></div>
+      <div class="ticker-item"><span class="ticker-sym">QQQ</span> <span class="ticker-price">$721.45</span> <span class="positive">+0.63%</span></div>
+      <div class="ticker-item"><span class="ticker-sym">IWM</span> <span class="ticker-price">$284.10</span> <span class="negative">-0.47%</span></div>
+      <div class="ticker-item"><span class="ticker-sym">TLT</span> <span class="ticker-price">$81.25</span> <span class="negative">-0.65%</span></div>
+      <div class="ticker-item"><span class="ticker-sym">GLD</span> <span class="ticker-price">$401.17</span> <span class="positive">+0.71%</span></div>
+      <div class="ticker-item"><span class="ticker-sym">BTC-USD</span> <span class="ticker-price">$81,209</span> <span class="positive">+7.40%</span></div>
+      <div class="ticker-item"><span class="ticker-sym">^VIX</span> <span class="ticker-price">14.81</span> <span class="positive">-4.08%</span></div>
+      <!-- Loop duplicate for seamless infinite animation -->
+      <div class="ticker-item"><span class="ticker-sym">SPY</span> <span class="ticker-price">$761.69</span> <span class="negative">-0.12%</span></div>
+      <div class="ticker-item"><span class="ticker-sym">QQQ</span> <span class="ticker-price">$721.45</span> <span class="positive">+0.63%</span></div>
+      <div class="ticker-item"><span class="ticker-sym">IWM</span> <span class="ticker-price">$284.10</span> <span class="negative">-0.47%</span></div>
+      <div class="ticker-item"><span class="ticker-sym">TLT</span> <span class="ticker-price">$81.25</span> <span class="negative">-0.65%</span></div>
+      <div class="ticker-item"><span class="ticker-sym">GLD</span> <span class="ticker-price">$401.17</span> <span class="positive">+0.71%</span></div>
+      <div class="ticker-item"><span class="ticker-sym">BTC-USD</span> <span class="ticker-price">$81,209</span> <span class="positive">+7.40%</span></div>
+      <div class="ticker-item"><span class="ticker-sym">^VIX</span> <span class="ticker-price">14.81</span> <span class="positive">-4.08%</span></div>
+    </div>
+  </div>
+
   <main class="shell">
     <header class="topbar">
       <div class="brand">
@@ -1025,6 +1090,16 @@
               <input type="password" id="aiKeyInput" placeholder="AIzaSy..." style="flex: 1; background: rgba(0,0,0,0.35); border: 1px solid var(--line); border-radius: 8px; padding: 8px 12px; color: var(--text); font-size: 13px;" />
               <button class="primary" id="saveKeyBtn" type="button" style="padding: 8px 16px; font-size: 13px;">Save</button>
               <button class="ghost" id="clearKeyBtn" type="button" style="padding: 8px 12px; font-size: 13px;">Clear</button>
+            </div>
+            <div style="display: flex; gap: 8px; margin-top: 10px; align-items: center;">
+              <label for="aiModelSelect" style="font-size: 12px; color: var(--muted); min-width: 50px;">Model:</label>
+              <select id="aiModelSelect" style="flex: 1; background: rgba(0,0,0,0.35); border: 1px solid var(--line); border-radius: 8px; padding: 6px 10px; color: var(--text); font-size: 12px;">
+                <option value="gemini-flash-latest" selected>gemini-flash-latest (Latest Flash · Fast)</option>
+                <option value="gemini-3-flash-preview">gemini-3-flash-preview (Gemini 3 Flash)</option>
+                <option value="gemini-3.1-pro-preview">gemini-3.1-pro-preview (Gemini 3.1 Pro)</option>
+                <option value="gemini-2.5-flash">gemini-2.5-flash</option>
+                <option value="gemini-pro-latest">gemini-pro-latest</option>
+              </select>
             </div>
             <small style="display: block; margin-top: 6px; color: var(--muted); font-size: 11px;">
               🔒 Your key is stored exclusively in your browser's localStorage. Calls go directly to Google's API; no backend server touches your key or budget numbers.
@@ -1378,10 +1453,18 @@
     const aiResponseContainer = $("aiResponseContainer");
     const aiResponseText = $("aiResponseText");
     const aiStatus = $("aiStatus");
+    const aiModelSelect = $("aiModelSelect");
+    const AI_MODEL_STORAGE = "finance_ai_lab_gemini_model";
 
-    // Load existing key
+    // Load existing key & model
     const savedKey = localStorage.getItem(AI_KEY_STORAGE) || "";
     if (savedKey) aiKeyInput.value = savedKey;
+
+    const savedModel = localStorage.getItem(AI_MODEL_STORAGE) || "gemini-flash-latest";
+    aiModelSelect.value = savedModel;
+    aiModelSelect.addEventListener("change", () => {
+      localStorage.setItem(AI_MODEL_STORAGE, aiModelSelect.value);
+    });
 
     openAiBtn.addEventListener("click", () => {
       aiModal.classList.add("open");
@@ -1415,6 +1498,8 @@
         aiKeyInput.focus();
         return;
       }
+
+      const selectedModel = localStorage.getItem(AI_MODEL_STORAGE) || aiModelSelect.value || "gemini-flash-latest";
 
       const t = totals();
       const budgetSummary = {
@@ -1450,11 +1535,11 @@ ${JSON.stringify(budgetSummary, null, 2)}
 `;
 
       aiResponseContainer.style.display = "block";
-      aiStatus.textContent = "Analyzing with Gemini 2.5 Flash...";
+      aiStatus.textContent = `Analyzing with ${selectedModel}...`;
       aiResponseText.textContent = "Contacting Google AI Studio...";
 
       try {
-        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
+        const url = `https://generativelanguage.googleapis.com/v1beta/models/${selectedModel}:generateContent?key=${apiKey}`;
         const res = await fetch(url, {
           method: "POST",
           headers: { "Content-Type": "application/json" },

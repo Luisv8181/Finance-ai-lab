@@ -3,33 +3,202 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta http-equiv="refresh" content="0; url=projects/financial-wellness-lab/index.html" />
-  <title>Finance AI Lab — Money Pulse</title>
+  <title>Finance AI Lab — Markets, Infrastructure, AI & Engineering</title>
   <style>
+    :root {
+      --bg: #07111f;
+      --panel: rgba(16, 36, 54, 0.72);
+      --line: rgba(163, 203, 229, 0.14);
+      --text: #eef7fb;
+      --muted: #91aabd;
+      --cyan: #58d8ff;
+      --mint: #79efc5;
+      --violet: #b19dff;
+    }
+    * { box-sizing: border-box; }
     body {
-      background: #07111f;
-      color: #eef7fb;
+      background: var(--bg);
+      color: var(--text);
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Passive Moving Market Ticker Tape */
+    .ticker-wrap {
+      width: 100%;
+      overflow: hidden;
+      background: rgba(4, 10, 18, 0.95);
+      border-bottom: 1px solid var(--line);
+      height: 38px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.35);
+    }
+    .ticker-move {
+      display: flex;
+      white-space: nowrap;
+      animation: tickerSlide 35s linear infinite;
+    }
+    .ticker-wrap:hover .ticker-move {
+      animation-play-state: paused;
+    }
+    @keyframes tickerSlide {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .ticker-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 0 24px;
+      font-size: 12px;
+      font-weight: 600;
+      border-right: 1px solid rgba(255,255,255,0.06);
+    }
+    .ticker-sym {
+      color: var(--cyan);
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+    .negative { color: #ff8e8e; }
+    .positive { color: #79efc5; }
+
+    .hub-container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 48px 24px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      height: 100vh;
-      margin: 0;
       text-align: center;
+      flex: 1;
+      justify-content: center;
     }
-    a {
-      color: #58d8ff;
+    .banner {
+      width: 100%;
+      max-width: 720px;
+      border-radius: 20px;
+      margin-bottom: 32px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    }
+    h1 {
+      font-size: clamp(32px, 5vw, 54px);
+      letter-spacing: -0.04em;
+      margin: 0 0 16px;
+    }
+    .gradient-text {
+      background: linear-gradient(90deg, var(--cyan), var(--mint) 50%, var(--violet));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    p.sub {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 640px;
+      line-height: 1.6;
+      margin: 0 0 36px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      width: 100%;
+      text-align: left;
+    }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 24px;
       text-decoration: none;
-      font-weight: 600;
+      color: inherit;
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
-    a:hover {
-      text-decoration: underline;
+    .card:hover {
+      border-color: var(--cyan);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(88,216,255,0.12);
+    }
+    .card h3 {
+      margin: 0 0 8px;
+      color: var(--text);
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .card-footer {
+      margin-top: 16px;
+      font-size: 13px;
+      color: var(--cyan);
+      font-weight: 600;
     }
   </style>
 </head>
 <body>
-  <h1>Finance AI Lab</h1>
-  <p>Redirecting to <a href="projects/financial-wellness-lab/index.html">Money Pulse (Financial Wellness Lab)</a>...</p>
+
+  <!-- Passive Moving Market Ticker Tape -->
+  <div class="ticker-wrap" aria-label="Live Market Ticker">
+    <div class="ticker-move" id="tickerMove">
+      <div class="ticker-item"><span class="ticker-sym">SPY</span> <span>$761.69</span> <span class="negative">-0.12%</span></div>
+      <div class="ticker-item"><span class="ticker-sym">QQQ</span> <span>$721.45</span> <span class="positive">+0.63%</span></div>
+      <div class="ticker-item"><span class="ticker-sym">IWM</span> <span>$284.10</span> <span class="negative">-0.47%</span></div>
+      <div class="ticker-item"><span class="ticker-sym">TLT</span> <span>$81.25</span> <span class="negative">-0.65%</span></div>
+      <div class="ticker-item"><span class="ticker-sym">GLD</span> <span>$401.17</span> <span class="positive">+0.71%</span></div>
+      <div class="ticker-item"><span class="ticker-sym">BTC-USD</span> <span>$81,209</span> <span class="positive">+7.40%</span></div>
+      <div class="ticker-item"><span class="ticker-sym">^VIX</span> <span>14.81</span> <span class="positive">-4.08%</span></div>
+      <!-- Duplicate loop for smooth infinite scroll -->
+      <div class="ticker-item"><span class="ticker-sym">SPY</span> <span>$761.69</span> <span class="negative">-0.12%</span></div>
+      <div class="ticker-item"><span class="ticker-sym">QQQ</span> <span>$721.45</span> <span class="positive">+0.63%</span></div>
+      <div class="ticker-item"><span class="ticker-sym">IWM</span> <span>$284.10</span> <span class="negative">-0.47%</span></div>
+      <div class="ticker-item"><span class="ticker-sym">TLT</span> <span>$81.25</span> <span class="negative">-0.65%</span></div>
+      <div class="ticker-item"><span class="ticker-sym">GLD</span> <span>$401.17</span> <span class="positive">+0.71%</span></div>
+      <div class="ticker-item"><span class="ticker-sym">BTC-USD</span> <span>$81,209</span> <span class="positive">+7.40%</span></div>
+      <div class="ticker-item"><span class="ticker-sym">^VIX</span> <span>14.81</span> <span class="positive">-4.08%</span></div>
+    </div>
+  </div>
+
+  <div class="hub-container">
+    <img class="banner" src="assets/finance-ai-lab-banner.svg" alt="Finance AI Lab Banner" />
+    <h1>Finance <span class="gradient-text">AI Lab</span></h1>
+    <p class="sub">
+      A transparent learning and engineering lab exploring markets, financial infrastructure, process engineering, and Bring Your Own Key (BYOK) AI tutoring.
+    </p>
+
+    <div class="grid">
+      <a class="card" href="projects/financial-wellness-lab/index.html">
+        <div>
+          <h3>💳 Money Pulse</h3>
+          <p>Interactive client-side financial wellness engine, cash flow mapping, breathing room analysis, and in-browser BYOK Gemini explainer.</p>
+        </div>
+        <div class="card-footer">Launch Money Pulse App &rarr;</div>
+      </a>
+
+      <a class="card" href="https://github.com/Luisv8181/Finance-ai-lab">
+        <div>
+          <h3>📡 Market Watcher & STOCKER</h3>
+          <p>Deterministic cross-asset market watcher, market-calendar audits, timestamped news filtering, and the Evidence Critic / Narrative Buster.</p>
+        </div>
+        <div class="card-footer">View Repository & Documentation &rarr;</div>
+      </a>
+    </div>
+  </div>
+
 </body>
 </html>
