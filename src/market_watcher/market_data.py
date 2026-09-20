@@ -19,6 +19,9 @@ DEFAULT_WATCHLIST: dict[str, str] = {
 }
 
 
+from .market_calendar import evaluate_staleness
+
+
 @dataclass(frozen=True)
 class MarketSnapshot:
     symbol: str
@@ -30,6 +33,10 @@ class MarketSnapshot:
     return_20d_pct: float
     ma_20: float
     ma_50: float
+    retrieval_time: str = ""
+    session_status: str = "UNKNOWN"
+    is_stale: bool = False
+    staleness_note: str = ""
 
 
 def period_return_pct(close: pd.Series, periods: int) -> float:
@@ -77,6 +84,7 @@ def fetch_history(symbol: str, period: str = "6mo") -> pd.DataFrame:
 
 
 def build_snapshot(symbol: str, label: str) -> MarketSnapshot:
+    retrieval_time = pd.Timestamp.now(tz="UTC").isoformat()
     history = fetch_history(symbol)
     close = history["Close"].dropna()
 
@@ -85,6 +93,7 @@ def build_snapshot(symbol: str, label: str) -> MarketSnapshot:
 
     observation = close.index[-1]
     observation_time = pd.Timestamp(observation).isoformat()
+    is_stale, staleness_note, session = evaluate_staleness(symbol, observation_time)
 
     return MarketSnapshot(
         symbol=symbol,
@@ -96,6 +105,10 @@ def build_snapshot(symbol: str, label: str) -> MarketSnapshot:
         return_20d_pct=period_return_pct(close, 20),
         ma_20=moving_average(close, 20),
         ma_50=moving_average(close, 50),
+        retrieval_time=retrieval_time,
+        session_status=session.session_type,
+        is_stale=is_stale,
+        staleness_note=staleness_note,
     )
 
 
