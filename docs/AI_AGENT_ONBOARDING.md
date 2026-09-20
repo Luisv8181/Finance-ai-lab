@@ -103,3 +103,10 @@ A new member should start with one of:
 - document a failed experiment;
 - improve the opportunity radar;
 - summarize one external repository and what we should or should not borrow from it.
+
+## 10. Bring Your Own Key (BYOK) for Gemini
+
+To run LLM-powered market explanations and budget tutoring for free:
+- See the click-by-click guide in `docs/BYOK_GUIDE.md`.
+- Get a free key at [Google AI Studio](https://aistudio.google.com/).
+- Never commit keys. In the CLI, store it in `.env` as `GEMINI_API_KEY=...`. In Money Pulse, store it in the in-app modal.

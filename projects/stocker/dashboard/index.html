@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STOCKER | Holographic Dashboard</title>
+    <link rel="stylesheet" href="/dashboard/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+    <div class="hologram-container">
+        <div class="scanlines"></div>
+        <div class="grid-overlay"></div>
+
+        <!-- Animated Stock Ticker Bar -->
+        <div class="ticker-bar">
+            <div class="ticker-track" id="ticker-track">
+                <span class="ticker-loading">LOADING MARKET DATA...</span>
+            </div>
+        </div>
+
+        <header>
+            <div class="logo-section">
+                <div class="logo">STOCKER</div>
+                <div class="version">INTELLIGENCE SYSTEM v4.1</div>
+            </div>
+            <div class="system-status">
+                <span class="status-label">SYSTEM STATUS:</span>
+                <span class="status-value pulse">OPERATIONAL</span>
+            </div>
+        </header>
+
+        <div class="main-layout">
+            <!-- Sidebar: Report History -->
+            <aside class="sidebar" id="sidebar">
+                <div class="sidebar-header">REPORT HISTORY</div>
+                <ul id="report-list" class="report-list">
+                    <li class="loading-item">Scanning archives...</li>
+                </ul>
+            </aside>
+
+            <!-- Main Content: Report Viewer -->
+            <main id="tablet">
+                <div class="tablet-frame">
+                    <div class="tablet-screen">
+                        <div id="content" class="md-content">
+                            <div class="loading">INITIALIZING NEURAL LINK...</div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <footer>
+            <div class="security-info">SECURED CONNECTION: AES-256</div>
+            <div class="timestamp" id="live-time"></div>
+        </footer>
+    </div>
+    <script src="/dashboard/app.js"></script>
+</body>
+</html>

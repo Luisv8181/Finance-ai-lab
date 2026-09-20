@@ -701,11 +701,139 @@
       .metrics, .input-grid { grid-template-columns: 1fr; }
       .add-form { grid-template-columns: 1fr 1fr; }
       .add-form button { grid-column: 1 / -1; }
-      .legend { grid-template-columns: 1fr 1fr; }
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(4, 10, 18, 0.82);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal-card {
+      background: #0d1e2e;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius);
+      width: min(100%, 680px);
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .modal-head {
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .modal-body {
+      padding: 20px 24px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .ai-prompt-btn {
+      text-align: left;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 10px 14px;
+      color: var(--text);
+      cursor: pointer;
+      font-size: 13px;
+      transition: all 0.2s ease;
+    }
+    .ai-prompt-btn:hover {
+      background: rgba(88, 216, 255, 0.08);
+      border-color: var(--cyan);
+      transform: translateY(-1px);
+    }
+    .ai-response {
+      background: rgba(0, 0, 0, 0.28);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 16px;
+      font-size: 14px;
+      line-height: 1.6;
+      color: #dcecf6;
+      white-space: pre-wrap;
+      max-height: 320px;
+      overflow-y: auto;
+    }
+
+    /* Passive Moving Market Ticker Tape */
+    .ticker-wrap {
+      width: 100%;
+      overflow: hidden;
+      background: rgba(5, 13, 23, 0.95);
+      border-bottom: 1px solid var(--line);
+      height: 36px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.35);
+    }
+    .ticker-move {
+      display: flex;
+      white-space: nowrap;
+      animation: tickerSlide 35s linear infinite;
+    }
+    .ticker-wrap:hover .ticker-move {
+      animation-play-state: paused;
+    }
+    @keyframes tickerSlide {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .ticker-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 0 24px;
+      font-size: 12px;
+      font-weight: 600;
+      border-right: 1px solid rgba(255,255,255,0.06);
+    }
+    .ticker-sym {
+      color: var(--cyan);
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+    .ticker-price {
+      color: #eef7fb;
     }
   </style>
 </head>
 <body>
+  <!-- Passive Market Ticker Tape -->
+  <div class="ticker-wrap" aria-label="Live Market Ticker">
+    <div class="ticker-move" id="tickerMove">
+      <div class="ticker-item"><span class="ticker-sym">SPY</span> <span class="ticker-price">$761.69</span> <span class="negative">-0.12%</span></div>
+      <div class="ticker-item"><span class="ticker-sym">QQQ</span> <span class="ticker-price">$721.45</span> <span class="positive">+0.63%</span></div>
+      <div class="ticker-item"><span class="ticker-sym">IWM</span> <span class="ticker-price">$284.10</span> <span class="negative">-0.47%</span></div>
+      <div class="ticker-item"><span class="ticker-sym">TLT</span> <span class="ticker-price">$81.25</span> <span class="negative">-0.65%</span></div>
+      <div class="ticker-item"><span class="ticker-sym">GLD</span> <span class="ticker-price">$401.17</span> <span class="positive">+0.71%</span></div>
+      <div class="ticker-item"><span class="ticker-sym">BTC-USD</span> <span class="ticker-price">$81,209</span> <span class="positive">+7.40%</span></div>
+      <div class="ticker-item"><span class="ticker-sym">^VIX</span> <span class="ticker-price">14.81</span> <span class="positive">-4.08%</span></div>
+      <!-- Loop duplicate for seamless infinite animation -->
+      <div class="ticker-item"><span class="ticker-sym">SPY</span> <span class="ticker-price">$761.69</span> <span class="negative">-0.12%</span></div>
+      <div class="ticker-item"><span class="ticker-sym">QQQ</span> <span class="ticker-price">$721.45</span> <span class="positive">+0.63%</span></div>
+      <div class="ticker-item"><span class="ticker-sym">IWM</span> <span class="ticker-price">$284.10</span> <span class="negative">-0.47%</span></div>
+      <div class="ticker-item"><span class="ticker-sym">TLT</span> <span class="ticker-price">$81.25</span> <span class="negative">-0.65%</span></div>
+      <div class="ticker-item"><span class="ticker-sym">GLD</span> <span class="ticker-price">$401.17</span> <span class="positive">+0.71%</span></div>
+      <div class="ticker-item"><span class="ticker-sym">BTC-USD</span> <span class="ticker-price">$81,209</span> <span class="positive">+7.40%</span></div>
+      <div class="ticker-item"><span class="ticker-sym">^VIX</span> <span class="ticker-price">14.81</span> <span class="positive">-4.08%</span></div>
+    </div>
+  </div>
+
   <main class="shell">
     <header class="topbar">
       <div class="brand">
@@ -717,6 +845,7 @@
       </div>
       <div class="top-actions">
         <span class="pill">LOCAL DATA ONLY</span>
+        <button class="ghost" id="openAiBtn" type="button" style="border-color: rgba(88,216,255,0.4); color: var(--cyan);">🤖 Ask Gemini (BYOK)</button>
         <button class="ghost" id="resetBtn" type="button">Reset demo</button>
         <button class="primary" type="button" onclick="document.querySelector('#lab').scrollIntoView()">Open lab ↓</button>
       </div>
@@ -939,8 +1068,72 @@
 
     <footer class="footer">
       <span>Finance AI Lab · Financial Wellness Experiment 02</span>
-      <span>Data persists only in this browser via localStorage. No network requests are made by this prototype.</span>
+      <span>Data persists only in this browser via localStorage. No network requests are made by this prototype unless you activate the BYOK Gemini Explainer.</span>
     </footer>
+
+    <div class="modal-overlay" id="aiModal">
+      <div class="modal-card">
+        <div class="modal-head">
+          <div>
+            <div class="eyebrow" style="color: var(--cyan);">Bring Your Own Key (BYOK)</div>
+            <strong style="font-size: 18px;">🤖 Gemini Financial Explainer</strong>
+          </div>
+          <button class="ghost" id="closeAiModalBtn" type="button" style="padding: 6px 12px; font-size: 18px;">✕</button>
+        </div>
+        <div class="modal-body">
+          <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--line); border-radius: 14px; padding: 14px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <label for="aiKeyInput" style="font-size: 13px; font-weight: 700; color: var(--text);">Google AI Studio API Key:</label>
+              <a href="https://aistudio.google.com/" target="_blank" rel="noopener" style="font-size: 12px; color: var(--cyan); text-decoration: none;">Get free key (30s) →</a>
+            </div>
+            <div style="display: flex; gap: 8px;">
+              <input type="password" id="aiKeyInput" placeholder="AIzaSy..." style="flex: 1; background: rgba(0,0,0,0.35); border: 1px solid var(--line); border-radius: 8px; padding: 8px 12px; color: var(--text); font-size: 13px;" />
+              <button class="primary" id="saveKeyBtn" type="button" style="padding: 8px 16px; font-size: 13px;">Save</button>
+              <button class="ghost" id="clearKeyBtn" type="button" style="padding: 8px 12px; font-size: 13px;">Clear</button>
+            </div>
+            <div style="display: flex; gap: 8px; margin-top: 10px; align-items: center;">
+              <label for="aiModelSelect" style="font-size: 12px; color: var(--muted); min-width: 50px;">Model:</label>
+              <select id="aiModelSelect" style="flex: 1; background: rgba(0,0,0,0.35); border: 1px solid var(--line); border-radius: 8px; padding: 6px 10px; color: var(--text); font-size: 12px;">
+                <option value="gemini-flash-latest" selected>gemini-flash-latest (Latest Flash · Fast)</option>
+                <option value="gemini-3-flash-preview">gemini-3-flash-preview (Gemini 3 Flash)</option>
+                <option value="gemini-3.1-pro-preview">gemini-3.1-pro-preview (Gemini 3.1 Pro)</option>
+                <option value="gemini-2.5-flash">gemini-2.5-flash</option>
+                <option value="gemini-pro-latest">gemini-pro-latest</option>
+              </select>
+            </div>
+            <small style="display: block; margin-top: 6px; color: var(--muted); font-size: 11px;">
+              🔒 Your key is stored exclusively in your browser's localStorage. Calls go directly to Google's API; no backend server touches your key or budget numbers.
+            </small>
+          </div>
+
+          <div>
+            <div style="font-size: 13px; font-weight: 700; margin-bottom: 8px; color: var(--text);">Instant Scenario Critiques:</div>
+            <div style="display: grid; gap: 8px;">
+              <button class="ai-prompt-btn" type="button" data-aiprompt="health">
+                🔍 <strong>Audit Budget Health & Breathing Room</strong>
+                <div style="font-size: 11px; color: var(--muted); margin-top: 2px;">Evaluate margin, essential cost load, and fragile assumptions.</div>
+              </button>
+              <button class="ai-prompt-btn" type="button" data-aiprompt="shock">
+                📉 <strong>Stress-Test a $300 Expense Spike or Income Drop</strong>
+                <div style="font-size: 11px; color: var(--muted); margin-top: 2px;">Analyze runway degradation and recommended trim points.</div>
+              </button>
+              <button class="ai-prompt-btn" type="button" data-aiprompt="runway">
+                🎯 <strong>Path to a 6-Month Emergency Runway</strong>
+                <div style="font-size: 11px; color: var(--muted); margin-top: 2px;">Calculate exact monthly adjustments to build resilience safely.</div>
+              </button>
+            </div>
+          </div>
+
+          <div id="aiResponseContainer" style="display: none;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+              <span style="font-size: 12px; font-weight: 700; color: var(--cyan);">Gemini 2.5 Flash Explainer:</span>
+              <span id="aiStatus" style="font-size: 11px; color: var(--muted);"></span>
+            </div>
+            <div class="ai-response" id="aiResponseText"></div>
+          </div>
+        </div>
+      </div>
+    </div>
   </main>
 
   <script>
@@ -1247,6 +1440,132 @@
       state = cloneDemo();
       localStorage.removeItem(STORAGE_KEY);
       render();
+    });
+
+    // BYOK Gemini AI Explainer
+    const AI_KEY_STORAGE = "finance_ai_lab_gemini_key";
+    const aiModal = $("aiModal");
+    const openAiBtn = $("openAiBtn");
+    const closeAiModalBtn = $("closeAiModalBtn");
+    const aiKeyInput = $("aiKeyInput");
+    const saveKeyBtn = $("saveKeyBtn");
+    const clearKeyBtn = $("clearKeyBtn");
+    const aiResponseContainer = $("aiResponseContainer");
+    const aiResponseText = $("aiResponseText");
+    const aiStatus = $("aiStatus");
+    const aiModelSelect = $("aiModelSelect");
+    const AI_MODEL_STORAGE = "finance_ai_lab_gemini_model";
+
+    // Load existing key & model
+    const savedKey = localStorage.getItem(AI_KEY_STORAGE) || "";
+    if (savedKey) aiKeyInput.value = savedKey;
+
+    const savedModel = localStorage.getItem(AI_MODEL_STORAGE) || "gemini-flash-latest";
+    aiModelSelect.value = savedModel;
+    aiModelSelect.addEventListener("change", () => {
+      localStorage.setItem(AI_MODEL_STORAGE, aiModelSelect.value);
+    });
+
+    openAiBtn.addEventListener("click", () => {
+      aiModal.classList.add("open");
+    });
+
+    closeAiModalBtn.addEventListener("click", () => {
+      aiModal.classList.remove("open");
+    });
+
+    aiModal.addEventListener("click", (e) => {
+      if (e.target === aiModal) aiModal.classList.remove("open");
+    });
+
+    saveKeyBtn.addEventListener("click", () => {
+      const key = aiKeyInput.value.trim();
+      if (!key) return alert("Please enter a valid Google AI Studio API key.");
+      localStorage.setItem(AI_KEY_STORAGE, key);
+      alert("API key saved locally in your browser!");
+    });
+
+    clearKeyBtn.addEventListener("click", () => {
+      localStorage.removeItem(AI_KEY_STORAGE);
+      aiKeyInput.value = "";
+      alert("API key removed from browser storage.");
+    });
+
+    async function queryGemini(promptType) {
+      const apiKey = localStorage.getItem(AI_KEY_STORAGE) || aiKeyInput.value.trim();
+      if (!apiKey) {
+        alert("Please enter and save your free Google AI Studio API key first.");
+        aiKeyInput.focus();
+        return;
+      }
+
+      const selectedModel = localStorage.getItem(AI_MODEL_STORAGE) || aiModelSelect.value || "gemini-flash-latest";
+
+      const t = totals();
+      const budgetSummary = {
+        monthlyIncome: state.income,
+        plannedSavings: state.plannedSavings,
+        emergencyFund: state.emergencyFund,
+        essentialsTotal: t.essentials,
+        lifestyleTotal: t.lifestyle,
+        futureTotal: t.future,
+        totalExpenses: t.totalExpenses,
+        monthlyBreathingRoom: t.margin,
+        emergencyRunwayMonths: t.essentials > 0 ? (state.emergencyFund / t.essentials).toFixed(1) : "n/a",
+        expenseLineItems: state.expenses.map(e => `${e.name} ($${e.amount}/mo in ${e.bucket})`)
+      };
+
+      let userQuestion = "";
+      if (promptType === "health") {
+        userQuestion = "Perform an educational audit of this monthly budget. Critique the breathing room margin, essential load, and identify the single most fragile assumption.";
+      } else if (promptType === "shock") {
+        userQuestion = "Stress-test an adverse scenario: what happens if income drops 15% or rent/housing spikes $300/mo? Which specific discretionary line items should be prioritized for trimming to preserve liquidity?";
+      } else if (promptType === "runway") {
+        userQuestion = "How resilient is this emergency fund? What exact monthly reallocation between Lifestyle and Future would get the emergency runway to 6 full months within a year?";
+      }
+
+      const systemPrompt = `You are the Financial Wellness Lab Tutor in Finance AI Lab.
+Educational rules:
+1. Provide transparent educational analysis, not personalized financial advice or product endorsements.
+2. Be grounded strictly in the provided mathematical facts.
+3. Structure your response into clear bullet points with concise, actionable insights.
+
+Current User Budget Facts:
+${JSON.stringify(budgetSummary, null, 2)}
+`;
+
+      aiResponseContainer.style.display = "block";
+      aiStatus.textContent = `Analyzing with ${selectedModel}...`;
+      aiResponseText.textContent = "Contacting Google AI Studio...";
+
+      try {
+        const url = `https://generativelanguage.googleapis.com/v1beta/models/${selectedModel}:generateContent?key=${apiKey}`;
+        const res = await fetch(url, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            contents: [{ parts: [{ text: `${systemPrompt}\n\nUser Question:\n${userQuestion}` }] }],
+            generationConfig: { temperature: 0.2, maxOutputTokens: 800 }
+          })
+        });
+
+        if (!res.ok) {
+          const err = await res.text();
+          throw new Error(`Google API returned HTTP ${res.status}: ${err.slice(0, 150)}`);
+        }
+
+        const data = await res.json();
+        const reply = data.candidates?.[0]?.content?.parts?.[0]?.text || "[No response text returned]";
+        aiStatus.textContent = "Done";
+        aiResponseText.textContent = reply;
+      } catch (err) {
+        aiStatus.textContent = "Error";
+        aiResponseText.textContent = `❌ ${err.message}\n\nPlease verify your API key from https://aistudio.google.com/`;
+      }
+    }
+
+    document.querySelectorAll("[data-aiprompt]").forEach((btn) => {
+      btn.addEventListener("click", () => queryGemini(btn.dataset.aiprompt));
     });
 
     render();
