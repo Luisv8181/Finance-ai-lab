@@ -69,9 +69,13 @@ LLMs are never the system of record for numeric market data.
 ## AI rules
 
 If adding an LLM:
-- show which evidence was supplied to the model;
+- follow the Bring Your Own Key (BYOK) protocol in `docs/BYOK_GUIDE.md`;
+- never hardcode, print, or commit API keys;
+- always support graceful fallback to deterministic outputs when no key is set;
+- show which evidence was supplied to the model (EvidenceBundle);
 - require citations or structured source IDs in outputs;
 - make uncertainty explicit;
+- evaluate chronology: headlines must precede market moves to be considered causal candidates;
 - create evaluation cases before adding more agents;
 - do not allow the model to silently rely on remembered current-market facts.
 
