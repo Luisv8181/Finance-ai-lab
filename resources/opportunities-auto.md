@@ -1,6 +1,6 @@
 # Automated Opportunity Review Queue
 
-Generated: **2026-09-21T18:41:20+00:00**
+Generated: **2026-09-28T20:07:01+00:00**
 
 This is a machine-generated discovery queue, not a verified opportunity list.
 A human should confirm dates, eligibility, cost, location, and application status on the official page.
@@ -70,7 +70,6 @@ Source: https://ai.finos.org/
 
 Source: https://www.sibos.com/
 
-- [Register now](https://www.sibos.com/conference/register)
 - [Skip to main content](https://www.sibos.com/#main-content)
 
 ## Money20/20 USA
@@ -95,7 +94,6 @@ Source: https://www.breakthroughtech.org/programs/the-ai-program/
 
 - [AI Program](https://www.breakthroughtech.org/programs/the-ai-program/#ai-program)
 - [Agentic AI](https://www.breakthroughtech.org/programs/the-ai-program/#agentic-ai)
-- [Apply Now](https://breakthroughtech.applytojob.com/apply/)
 - [Programs](https://www.breakthroughtech.org/programs/)
 - [Submit an Interest Form](https://breakthroughtech.tfaforms.net/f/breakthroughtech-program-interest-v5)
 - [Submit Interest Form](https://www.breakthroughtech.org/programs/the-ai-program/#interest-form)
