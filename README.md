@@ -42,6 +42,18 @@ Every two weeks:
 5. Build or improve one artifact.
 6. Capture decisions, questions, and next actions in GitHub.
 
+## New flagship build: Open Finance Terminal / AI Terminal
+
+An open-source, AI-native terminal-style research environment extending Market Watcher into a broader financial research workspace.
+
+See:
+- [Open Finance Terminal](projects/open-finance-terminal/README.md)
+- [Terminal architecture](projects/open-finance-terminal/ARCHITECTURE.md)
+- [Terminal roadmap](docs/terminal-roadmap.md)
+- [Week 2 meeting agenda](meetings/2026-10-02-week-2.md)
+
+The design goal is not to copy a proprietary terminal. It is to build an inspectable research system around public/open data, provider adapters, deterministic analytics, provenance, and eventually tool-using/local AI.
+
 ## Flagship project: Market Watcher / Market Tutor
 
 A learning-first market intelligence system that eventually should answer:
