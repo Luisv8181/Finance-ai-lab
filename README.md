@@ -10,7 +10,9 @@ The lab is part discussion group, part research notebook, and part tiny engineer
 
 ## Start here
 
-**For tonight — September 16, 2026**
+**For Week 2 — October 2, 2026**
+- [Week 2 agenda](meetings/2026-10-02-week-2.md)
+- [Finance AI Tool Safari](tools/finance-ai-tool-safari.md)
 - [Kickoff agenda](meetings/2026-09-16-kickoff.md)
 - [Orientation and recurring meeting format](docs/orientation.md)
 - [Reading queue](docs/reading-queue.md)
@@ -51,6 +53,7 @@ See:
 - [Terminal architecture](projects/open-finance-terminal/ARCHITECTURE.md)
 - [Terminal roadmap](docs/terminal-roadmap.md)
 - [Week 2 meeting agenda](meetings/2026-10-02-week-2.md)
+- [Finance AI Tool Safari](tools/finance-ai-tool-safari.md)
 
 The design goal is not to copy a proprietary terminal. It is to build an inspectable research system around public/open data, provider adapters, deterministic analytics, provenance, and eventually tool-using/local AI.
 
@@ -171,7 +174,10 @@ Finance-ai-lab/
 │   └── reading-queue.md
 ├── meetings/
 │   ├── TEMPLATE.md
-│   └── 2026-09-16-kickoff.md
+│   ├── 2026-09-16-kickoff.md
+│   └── 2026-10-02-week-2.md
+├── tools/
+│   └── finance-ai-tool-safari.md
 ├── projects/
 │   ├── market-watcher/
 │   │   ├── README.md
