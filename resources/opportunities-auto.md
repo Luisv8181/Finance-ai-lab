@@ -1,6 +1,6 @@
 # Automated Opportunity Review Queue
 
-Generated: **2026-09-28T20:07:01+00:00**
+Generated: **2026-10-05T21:16:43+00:00**
 
 This is a machine-generated discovery queue, not a verified opportunity list.
 A human should confirm dates, eligibility, cost, location, and application status on the official page.
@@ -9,13 +9,16 @@ A human should confirm dates, eligibility, cost, location, and application statu
 
 Source: https://www.finos.org/hosted-events
 
-- [OS IN FINANCE WEBINAR - HOW FRONTIER AI CHANGES TOLERABLE RISK FOR OPEN SOURCE SECURITY IN FINANCIAL SERVICES](https://www.finos.org/hosted-events/2026-10-14-osinfinance-webinar-chainguard)
-- [OPEN SOURCE IN FINANCE FORUM NEW YORK](https://www.finos.org/hosted-events/2026-11-05-osff-new-york)
+- [OS IN FINANCE WEBINAR - HOW FRONTIER AI CHANGES TOLERABLE RISK FOR OPEN SOURCE SECURITY IN FINANCIAL SERVICES](https://www.finos.org/hosted-events/2026-10-28-osinfinance-webinar-chainguard)
 - [CDM NYC SEMINAR 2026](https://www.finos.org/hosted-events/2026-10-08-cdm-nyc-seminar-2026)
 - [Common Domain Model (CDM)](https://www.finos.org/common-domain-model)
 - [Podcast: Open Source in Finance](https://www.finos.org/open-source-in-finance-podcast)
 - [Artificial Intelligence (AI)](https://ai.finos.org/)
+- [BEYOND BLACK-BOX AI: OPERATIONALIZING DETERMINISTIC FINANCIAL LOGIC WITH MORPHIR — OSFF NEW YORK](https://www.finos.org/hosted-events/2026-11-03-reg-workshop-osff-nyc)
+- [BUILDING TRUSTED KUBERNETES FOR FINANCE WITH COMMON CLOUD CONTROLS WORKSHOP - OSFF NEW YORK](https://www.finos.org/hosted-events/2026-11-03-ccc-workshop-osff-nyc)
 - [Email Preferences](https://www.finos.org/hs/manage-preferences/unsubscribe-simple)
+- [GOVERNED AI: FROM VIBE TO PRODUCTION WITH FDC3 - OSFF NEW YORK](https://www.finos.org/hosted-events/2026-11-03-fdc3-workshop-osff-nyc)
+- [NEW DEVELOPER TOOLING FOR CDM: A HANDS-ON EXPLORATION - OSFF NEW YORK](https://www.finos.org/hosted-events/2026-11-03-cdm-workshop-osff-nyc)
 - [Open Source Maturity Model](https://osr.finos.org/docs/bok/OSMM/Introduction)
 - [Open Source Readiness Initiative](https://www.finos.org/open-source-readiness)
 - [Our Developer Toolchain](https://odp.finos.org/)
