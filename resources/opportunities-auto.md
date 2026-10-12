@@ -1,6 +1,6 @@
 # Automated Opportunity Review Queue
 
-Generated: **2026-10-05T21:16:43+00:00**
+Generated: **2026-10-12T21:43:56+00:00**
 
 This is a machine-generated discovery queue, not a verified opportunity list.
 A human should confirm dates, eligibility, cost, location, and application status on the official page.
@@ -17,6 +17,7 @@ Source: https://www.finos.org/hosted-events
 - [BEYOND BLACK-BOX AI: OPERATIONALIZING DETERMINISTIC FINANCIAL LOGIC WITH MORPHIR — OSFF NEW YORK](https://www.finos.org/hosted-events/2026-11-03-reg-workshop-osff-nyc)
 - [BUILDING TRUSTED KUBERNETES FOR FINANCE WITH COMMON CLOUD CONTROLS WORKSHOP - OSFF NEW YORK](https://www.finos.org/hosted-events/2026-11-03-ccc-workshop-osff-nyc)
 - [Email Preferences](https://www.finos.org/hs/manage-preferences/unsubscribe-simple)
+- [FINOS FALL 2026 HACKATHON](https://www.finos.org/hosted-events/2026-11-13-finos-fall-2026-hackathon)
 - [GOVERNED AI: FROM VIBE TO PRODUCTION WITH FDC3 - OSFF NEW YORK](https://www.finos.org/hosted-events/2026-11-03-fdc3-workshop-osff-nyc)
 - [NEW DEVELOPER TOOLING FOR CDM: A HANDS-ON EXPLORATION - OSFF NEW YORK](https://www.finos.org/hosted-events/2026-11-03-cdm-workshop-osff-nyc)
 - [Open Source Maturity Model](https://osr.finos.org/docs/bok/OSMM/Introduction)
