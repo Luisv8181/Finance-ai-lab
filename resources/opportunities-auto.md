@@ -1,6 +1,6 @@
 # Automated Opportunity Review Queue
 
-Generated: **2026-10-12T21:43:56+00:00**
+Generated: **2026-10-19T19:19:37+00:00**
 
 This is a machine-generated discovery queue, not a verified opportunity list.
 A human should confirm dates, eligibility, cost, location, and application status on the official page.
@@ -10,7 +10,6 @@ A human should confirm dates, eligibility, cost, location, and application statu
 Source: https://www.finos.org/hosted-events
 
 - [OS IN FINANCE WEBINAR - HOW FRONTIER AI CHANGES TOLERABLE RISK FOR OPEN SOURCE SECURITY IN FINANCIAL SERVICES](https://www.finos.org/hosted-events/2026-10-28-osinfinance-webinar-chainguard)
-- [CDM NYC SEMINAR 2026](https://www.finos.org/hosted-events/2026-10-08-cdm-nyc-seminar-2026)
 - [Common Domain Model (CDM)](https://www.finos.org/common-domain-model)
 - [Podcast: Open Source in Finance](https://www.finos.org/open-source-in-finance-podcast)
 - [Artificial Intelligence (AI)](https://ai.finos.org/)
@@ -88,7 +87,6 @@ Source: https://www.nvidia.com/gtc/events/
 
 - [Get More Details](https://www.nvidia.com/en-tw/gtc/taipei/)
 - [GTC Taipei](https://www.nvidia.com/en-tw/gtc/)
-- [Register Now](https://www.nvidia.com/en-eu/gtc/pricing/)
 - [Register Now](https://www.nvidia.com/gtc/dc/pricing/)
 - [Watch GTC Taipei Sessions](https://www.nvidia.com/en-us/on-demand/playlist/playList-1e4f6d1d-64d3-4263-bcaa-e06b47b1f0fa/?gtcnavinherit=true)
 
@@ -96,8 +94,4 @@ Source: https://www.nvidia.com/gtc/events/
 
 Source: https://www.breakthroughtech.org/programs/the-ai-program/
 
-- [AI Program](https://www.breakthroughtech.org/programs/the-ai-program/#ai-program)
-- [Agentic AI](https://www.breakthroughtech.org/programs/the-ai-program/#agentic-ai)
-- [Programs](https://www.breakthroughtech.org/programs/)
-- [Submit an Interest Form](https://breakthroughtech.tfaforms.net/f/breakthroughtech-program-interest-v5)
-- [Submit Interest Form](https://www.breakthroughtech.org/programs/the-ai-program/#interest-form)
+_Scanner error: URLError: <urlopen error timed out>_
