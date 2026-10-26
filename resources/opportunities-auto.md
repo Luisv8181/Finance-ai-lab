@@ -1,6 +1,6 @@
 # Automated Opportunity Review Queue
 
-Generated: **2026-10-19T19:19:37+00:00**
+Generated: **2026-10-26T19:17:38+00:00**
 
 This is a machine-generated discovery queue, not a verified opportunity list.
 A human should confirm dates, eligibility, cost, location, and application status on the official page.
@@ -94,4 +94,8 @@ Source: https://www.nvidia.com/gtc/events/
 
 Source: https://www.breakthroughtech.org/programs/the-ai-program/
 
-_Scanner error: URLError: <urlopen error timed out>_
+- [AI Program](https://www.breakthroughtech.org/programs/the-ai-program/#ai-program)
+- [Agentic AI](https://www.breakthroughtech.org/programs/the-ai-program/#agentic-ai)
+- [Programs](https://www.breakthroughtech.org/programs/)
+- [Submit an Interest Form](https://breakthroughtech.tfaforms.net/f/breakthroughtech-program-interest-v5)
+- [Submit Interest Form](https://www.breakthroughtech.org/programs/the-ai-program/#interest-form)
