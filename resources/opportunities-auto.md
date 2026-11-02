@@ -1,6 +1,6 @@
 # Automated Opportunity Review Queue
 
-Generated: **2026-10-26T19:17:38+00:00**
+Generated: **2026-11-02T22:18:46+00:00**
 
 This is a machine-generated discovery queue, not a verified opportunity list.
 A human should confirm dates, eligibility, cost, location, and application status on the official page.
@@ -9,7 +9,6 @@ A human should confirm dates, eligibility, cost, location, and application statu
 
 Source: https://www.finos.org/hosted-events
 
-- [OS IN FINANCE WEBINAR - HOW FRONTIER AI CHANGES TOLERABLE RISK FOR OPEN SOURCE SECURITY IN FINANCIAL SERVICES](https://www.finos.org/hosted-events/2026-10-28-osinfinance-webinar-chainguard)
 - [Common Domain Model (CDM)](https://www.finos.org/common-domain-model)
 - [Podcast: Open Source in Finance](https://www.finos.org/open-source-in-finance-podcast)
 - [Artificial Intelligence (AI)](https://ai.finos.org/)
@@ -22,7 +21,6 @@ Source: https://www.finos.org/hosted-events
 - [Open Source Maturity Model](https://osr.finos.org/docs/bok/OSMM/Introduction)
 - [Open Source Readiness Initiative](https://www.finos.org/open-source-readiness)
 - [Our Developer Toolchain](https://odp.finos.org/)
-- [Register for the Webinar Here](https://zoom.us/webinar/register/9617891588996/WN_mWNVM3-vSBuGJK5bpKmtcw)
 - [Training](https://training.linuxfoundation.org/finos/)
 
 ## FINOS Community
