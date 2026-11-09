@@ -1,6 +1,6 @@
 # Automated Opportunity Review Queue
 
-Generated: **2026-11-02T22:18:46+00:00**
+Generated: **2026-11-09T22:58:35+00:00**
 
 This is a machine-generated discovery queue, not a verified opportunity list.
 A human should confirm dates, eligibility, cost, location, and application status on the official page.
@@ -57,14 +57,16 @@ Source: https://talent.finos.org/
 Source: https://ai.finos.org/
 
 - [Winners of the FINOS supported Innovate.DTCC 2026 Industry-Powered AI Hackathon Announced](https://www.dtcc.com/dtcc-connection/articles/2026/march/26/innovate-dtcc-2026-industry-powered-ai-hackathon-winners)
+- [3 — Set the guardrails](https://ai.finos.org/governance-as-code#set-the-guardrails)
 - [Agentic FSI Specs](https://ai.finos.org/agentic-financial-services)
 - [AI at FINOS](https://ai.finos.org/)
 - [Common Controls for AI Services Press Release](https://www.finos.org/press/global-financial-institutions-and-technology-leaders-collaborate-under-finos-to-launch-open-source-common-controls-for-ai-services)
 - [Email Preferences](https://www.finos.org/hs/manage-preferences/unsubscribe-simple)
+- [FINOS Launches the AI Fund](https://www.finos.org/press/finos-launches-ai-fund)
 - [Get involved](https://ai.finos.org/#join-us)
 - [Join the AI Fund](https://ai.finos.org/ai-fund)
 - [Join the FINOS AI Fund](https://ai.finos.org/ai-fund#why-join-heading)
-- [New FINOS launches the AI Fund Read the announcement →](https://www.finos.org/press/finos-launches-ai-fund)
+- [New New in Governance as Code AI Evaluation, Tokenomics, and use case prioritization.](https://ai.finos.org/governance-as-code#across-the-pipeline)
 - [Skip to main content](https://ai.finos.org/#__docusaurus_skipToContent_fallback)
 
 ## Sibos
