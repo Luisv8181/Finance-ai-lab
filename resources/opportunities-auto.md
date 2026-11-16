@@ -1,6 +1,6 @@
 # Automated Opportunity Review Queue
 
-Generated: **2026-11-09T22:58:35+00:00**
+Generated: **2026-11-16T22:52:43+00:00**
 
 This is a machine-generated discovery queue, not a verified opportunity list.
 A human should confirm dates, eligibility, cost, location, and application status on the official page.
@@ -9,18 +9,17 @@ A human should confirm dates, eligibility, cost, location, and application statu
 
 Source: https://www.finos.org/hosted-events
 
+- [OS IN FINANCE WEBINAR - HOW FRONTIER AI CHANGES TOLERABLE RISK FOR OPEN SOURCE SECURITY IN FINANCIAL SERVICES](https://www.finos.org/hosted-events/2026-12-16-osinfinance-webinar-chainguard?hsLang=en-us)
 - [Common Domain Model (CDM)](https://www.finos.org/common-domain-model)
 - [Podcast: Open Source in Finance](https://www.finos.org/open-source-in-finance-podcast)
 - [Artificial Intelligence (AI)](https://ai.finos.org/)
-- [BEYOND BLACK-BOX AI: OPERATIONALIZING DETERMINISTIC FINANCIAL LOGIC WITH MORPHIR — OSFF NEW YORK](https://www.finos.org/hosted-events/2026-11-03-reg-workshop-osff-nyc)
-- [BUILDING TRUSTED KUBERNETES FOR FINANCE WITH COMMON CLOUD CONTROLS WORKSHOP - OSFF NEW YORK](https://www.finos.org/hosted-events/2026-11-03-ccc-workshop-osff-nyc)
-- [Email Preferences](https://www.finos.org/hs/manage-preferences/unsubscribe-simple)
-- [FINOS FALL 2026 HACKATHON](https://www.finos.org/hosted-events/2026-11-13-finos-fall-2026-hackathon)
-- [GOVERNED AI: FROM VIBE TO PRODUCTION WITH FDC3 - OSFF NEW YORK](https://www.finos.org/hosted-events/2026-11-03-fdc3-workshop-osff-nyc)
-- [NEW DEVELOPER TOOLING FOR CDM: A HANDS-ON EXPLORATION - OSFF NEW YORK](https://www.finos.org/hosted-events/2026-11-03-cdm-workshop-osff-nyc)
+- [Email Preferences](https://www.finos.org/hs/manage-preferences/unsubscribe-simple?hsLang=en-us)
+- [FINOS JAPAN EXECUTIVE SEMINAR 2026](https://www.finos.org/hosted-events/2026-12-10-finos-japan-executive-seminar?hsLang=en-us)
 - [Open Source Maturity Model](https://osr.finos.org/docs/bok/OSMM/Introduction)
 - [Open Source Readiness Initiative](https://www.finos.org/open-source-readiness)
+- [Open Source Summit Japan](https://events.linuxfoundation.org/open-source-summit-japan/)
 - [Our Developer Toolchain](https://odp.finos.org/)
+- [Register for the Webinar Here](https://zoom.us/webinar/register/9617891588996/WN_mWNVM3-vSBuGJK5bpKmtcw)
 - [Training](https://training.linuxfoundation.org/finos/)
 
 ## FINOS Community
